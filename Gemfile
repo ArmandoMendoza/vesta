@@ -21,10 +21,10 @@ end
 
 group :test, :development do
   gem "debugger"
+  gem "rspec-rails"
 end
 
 group :test do
-  gem "rspec-rails"
   gem 'machinist'
   gem 'faker'
   gem 'capybara'
