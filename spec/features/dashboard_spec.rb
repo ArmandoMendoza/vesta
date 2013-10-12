@@ -14,7 +14,7 @@ describe "Dashboard" do
     context "with login" do
 
       it "should have a welcome message" do
-        login User.make!(:contractor)
+        login User.make!(:contractor_admin)
         visit dashboard_path
         expect(page).to have_content("Bienvenido a Dashboard")
       end

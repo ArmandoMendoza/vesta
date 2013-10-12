@@ -16,21 +16,65 @@ SubContractor.blueprint do
   email { Faker::Internet.email }
 end
 
-User.blueprint(:contractor) do
+# Users of Contractor
+User.blueprint(:contractor_admin) do
   first_name { Faker::Name.first_name }
   last_name { Faker::Name.last_name }
   phone { Faker::PhoneNumber.phone_number }
   email { Faker::Internet.email }
   password { "secret12" }
+  user_type { User::USER_TYPE[:admin] }
   company { Contractor.make! }
 end
 
-User.blueprint(:sub_contractor) do
+User.blueprint(:contractor_owner) do
   first_name { Faker::Name.first_name }
   last_name { Faker::Name.last_name }
   phone { Faker::PhoneNumber.phone_number }
   email { Faker::Internet.email }
   password { "secret12" }
+  user_type { User::USER_TYPE[:owner] }
+  company { Contractor.make! }
+end
+
+User.blueprint(:contractor_regular) do
+  first_name { Faker::Name.first_name }
+  last_name { Faker::Name.last_name }
+  phone { Faker::PhoneNumber.phone_number }
+  email { Faker::Internet.email }
+  password { "secret12" }
+  user_type { User::USER_TYPE[:regular] }
+  company { Contractor.make! }
+end
+
+# Users of SubContractor
+User.blueprint(:sub_contractor_admin) do
+  first_name { Faker::Name.first_name }
+  last_name { Faker::Name.last_name }
+  phone { Faker::PhoneNumber.phone_number }
+  email { Faker::Internet.email }
+  password { "secret12" }
+  user_type { User::USER_TYPE[:admin] }
+  company { SubContractor.make! }
+end
+
+User.blueprint(:sub_contractor_owner) do
+  first_name { Faker::Name.first_name }
+  last_name { Faker::Name.last_name }
+  phone { Faker::PhoneNumber.phone_number }
+  email { Faker::Internet.email }
+  password { "secret12" }
+  user_type { User::USER_TYPE[:owner] }
+  company { SubContractor.make! }
+end
+
+User.blueprint(:sub_contractor_regular) do
+  first_name { Faker::Name.first_name }
+  last_name { Faker::Name.last_name }
+  phone { Faker::PhoneNumber.phone_number }
+  email { Faker::Internet.email }
+  password { "secret12" }
+  user_type { User::USER_TYPE[:regular] }
   company { SubContractor.make! }
 end
 
