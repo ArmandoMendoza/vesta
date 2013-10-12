@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it { should belong_to(:company) }
+  it { should have_many(:collaborators) }
+  it { should have_many(:projects).through(:collaborators) }
+
 end

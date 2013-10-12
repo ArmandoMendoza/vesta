@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Project do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it { should belong_to(:contractor) }
+  it { should belong_to(:sub_contractor) }
+  it { should have_many(:collaborators) }
+  it { should have_many(:users).through(:collaborators) }
+
 end
