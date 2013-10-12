@@ -21,7 +21,7 @@ User.blueprint(:contractor) do
   last_name { Faker::Name.last_name }
   phone { Faker::PhoneNumber.phone_number }
   email { Faker::Internet.email }
-  password { "secret" }
+  password { "secret12" }
   company { Contractor.make! }
 end
 
@@ -30,7 +30,7 @@ User.blueprint(:sub_contractor) do
   last_name { Faker::Name.last_name }
   phone { Faker::PhoneNumber.phone_number }
   email { Faker::Internet.email }
-  password { "secret" }
+  password { "secret12" }
   company { SubContractor.make! }
 end
 
