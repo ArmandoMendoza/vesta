@@ -10,4 +10,13 @@ module ApplicationHelper
       end
     end
   end
+
+  def table_panel(title, class_table = "table")
+    content_tag(:div, class: "panel panel-default") do
+      content_tag(:div, title, class: "panel-heading") +
+      content_tag(:table, class: class_table) do
+        yield
+      end
+    end
+  end
 end

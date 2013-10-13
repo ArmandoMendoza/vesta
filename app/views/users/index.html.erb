@@ -1,5 +1,4 @@
-<h1>Usuarios de <%= @company.name %></h1>
-<table>
+<%= table_panel("USUARIOS DE #{@company.name}") do %>
   <tr>
     <th>Nombre</th>
     <th>Apellido</th>
@@ -16,5 +15,4 @@
       <td><%= user.user_type %></td>
     </tr>
   <% end %>
-</table>
-
+<% end %>
