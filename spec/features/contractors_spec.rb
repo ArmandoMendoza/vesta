@@ -1,13 +1,16 @@
 require 'spec_helper'
 
 describe "Contractors" do
+  before do
+    login User.make!(:contractor_admin)
+  end
+
   describe "User visit index" do
     before do
       3.times { Contractor.make! }
     end
 
     it "should have a table with all contractors" do
-      login User.make!(:contractor_admin)
       visit contractors_path
       within('table') do
         Contractor.all.each do |contractor|
@@ -20,13 +23,33 @@ describe "Contractors" do
   describe "User visit show" do
     it "should have show all information of contractor" do
       contractor = Contractor.make!
-      login User.make!(:contractor_admin)
       visit contractor_path(contractor)
       expect(page).to have_content("Contratante #{contractor.name}")
       expect(page).to have_content(contractor.rif)
       expect(page).to have_content(contractor.address)
       expect(page).to have_content(contractor.phone)
       expect(page).to have_content(contractor.email)
+    end
+  end
+
+  describe "User create a new contractor" do
+    context "with valid values" do
+      it "should show the info of new contractor" do
+        visit new_contractor_path
+        within('form#new_contractor') do
+          fill_in :contractor_name, with: "Cooperativa Nova"
+          fill_in :contractor_rif, with: "J-31446097-8"
+          fill_in :contractor_address, with: "San Cristobal"
+          fill_in :contractor_phone, with: "0276-3535340"
+          fill_in :contractor_email, with: "coopnova@hotmail.com"
+          click_button "Create Contractor"
+        end
+        expect(page).to have_content("Contratante Cooperativa Nova")
+        expect(page).to have_content("J-31446097-8")
+        expect(page).to have_content("San Cristobal")
+        expect(page).to have_content("0276-3535340")
+        expect(page).to have_content("coopnova@hotmail.com")
+      end
     end
   end
 end

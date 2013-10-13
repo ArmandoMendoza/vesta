@@ -11,6 +11,16 @@ class ContractorsController < ApplicationController
   end
 
   def new
+    @contractor = Contractor.new
+  end
+
+  def create
+    @contractor = Contractor.new(contractor_params)
+    if @contractor.save
+      redirect_to contractor_path(@contractor)
+    else
+      render :new
+    end
   end
 
   private
@@ -18,6 +28,6 @@ class ContractorsController < ApplicationController
       @contractor = Contractor.find(params[:id])
     end
     def contractor_params
-      params.require(contractor).permit(:name, :rif, :address, :phone, :email)
+      params.require(:contractor).permit(:name, :rif, :address, :phone, :email)
     end
 end

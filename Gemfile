@@ -6,7 +6,7 @@ gem 'kaminari'
 gem 'pg'
 gem 'jbuilder', '~> 1.2'
 gem 'turbolinks'
-# gem 'simple_form', github: 'plataformatec/simple_form', branch: 'master'
+gem 'simple_form'
 # gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
 
 # assets

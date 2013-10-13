@@ -1,2 +1,9 @@
-<h1>Contractors#new</h1>
-<p>Find me in app/views/contractors/new.html.erb</p>
+<h1>Nuevo Contratante</h1>
+<%= simple_form_for @contractor do |f| %>
+  <%= f.input :name %>
+  <%= f.input :rif %>
+  <%= f.input :address %>
+  <%= f.input :email %>
+  <%= f.input :phone %>
+  <%= f.submit %>
+<% end %>
