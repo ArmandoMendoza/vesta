@@ -12,7 +12,26 @@ class User < ActiveRecord::Base
   #### Callbacks ####
   before_save :set_user_type
 
-  def set_user_type
-    self.user_type ||= USER_TYPE[:regular]
+  #### Instance Methods ####
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
+
+  def admin?
+    user_type == USER_TYPE[:admin]
+  end
+
+  def owner?
+    user_type == USER_TYPE[:owner]
+  end
+
+  def regular?
+    user_type == USER_TYPE[:regular]
+  end
+
+  private
+    def set_user_type
+      self.user_type ||= USER_TYPE[:regular]
+    end
 end

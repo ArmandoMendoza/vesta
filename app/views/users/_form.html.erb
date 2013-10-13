@@ -1,8 +1,12 @@
-<%= simple_form_for @contractor do |f| %>
-  <%= f.input :name %>
-  <%= f.input :rif %>
-  <%= f.input :address %>
+<%= simple_form_for [@company, @user] do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
   <%= f.input :email %>
   <%= f.input :phone %>
+  <%= f.input :password, required: true %>
+  <%= f.input :password_confirmation, required: true %>
+  <% if current_user.admin? %>
+    <%= f.input :user_type, collection: User::USER_TYPE %>
+  <% end %>
   <%= f.submit class: "btn btn-success" %>
 <% end %>

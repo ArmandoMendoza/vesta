@@ -11,6 +11,8 @@ es:
         first_name: "Nombre"
         last_name: "Apellido"
         phone: "Telefono"
+        password_confirmation: "Confirmacion de Password"
+        user_type: "Tipo de Usuario"
       contractor:
         name: "Nombre"
         phone: "Telefono"
