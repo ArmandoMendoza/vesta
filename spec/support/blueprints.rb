@@ -4,7 +4,7 @@ Contractor.blueprint do
   name { Faker::Name.name }
   address { "#{Faker::Address.street_address}, #{Faker::Address.city}"}
   rif { "J-12345678-#{sn}"}
-  phone { Faker::PhoneNumber.phone_number }
+  phone { "276-3535340" }
   email { Faker::Internet.email }
 end
 
@@ -12,7 +12,7 @@ SubContractor.blueprint do
   name { Faker::Name.name }
   address { "#{Faker::Address.street_address}, #{Faker::Address.city}"}
   rif { "J-98765432-#{sn}"}
-  phone { Faker::PhoneNumber.phone_number }
+  phone { "276-3535340" }
   email { Faker::Internet.email }
 end
 
@@ -20,7 +20,7 @@ end
 User.blueprint(:contractor_admin) do
   first_name { Faker::Name.first_name }
   last_name { Faker::Name.last_name }
-  phone { Faker::PhoneNumber.phone_number }
+  phone { "276-3535340" }
   email { Faker::Internet.email }
   password { "secret12" }
   user_type { User::USER_TYPE[:admin] }
@@ -30,7 +30,7 @@ end
 User.blueprint(:contractor_owner) do
   first_name { Faker::Name.first_name }
   last_name { Faker::Name.last_name }
-  phone { Faker::PhoneNumber.phone_number }
+  phone { "276-3535340" }
   email { Faker::Internet.email }
   password { "secret12" }
   user_type { User::USER_TYPE[:owner] }
@@ -40,7 +40,7 @@ end
 User.blueprint(:contractor_regular) do
   first_name { Faker::Name.first_name }
   last_name { Faker::Name.last_name }
-  phone { Faker::PhoneNumber.phone_number }
+  phone { "276-3535340" }
   email { Faker::Internet.email }
   password { "secret12" }
   user_type { User::USER_TYPE[:regular] }
@@ -51,7 +51,7 @@ end
 User.blueprint(:sub_contractor_admin) do
   first_name { Faker::Name.first_name }
   last_name { Faker::Name.last_name }
-  phone { Faker::PhoneNumber.phone_number }
+  phone { "276-3535340" }
   email { Faker::Internet.email }
   password { "secret12" }
   user_type { User::USER_TYPE[:admin] }
@@ -61,7 +61,7 @@ end
 User.blueprint(:sub_contractor_owner) do
   first_name { Faker::Name.first_name }
   last_name { Faker::Name.last_name }
-  phone { Faker::PhoneNumber.phone_number }
+  phone { "276-3535340" }
   email { Faker::Internet.email }
   password { "secret12" }
   user_type { User::USER_TYPE[:owner] }
@@ -71,7 +71,7 @@ end
 User.blueprint(:sub_contractor_regular) do
   first_name { Faker::Name.first_name }
   last_name { Faker::Name.last_name }
-  phone { Faker::PhoneNumber.phone_number }
+  phone { "276-3535340" }
   email { Faker::Internet.email }
   password { "secret12" }
   user_type { User::USER_TYPE[:regular] }

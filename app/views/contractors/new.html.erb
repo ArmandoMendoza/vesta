@@ -1,9 +1,2 @@
 <h1>Nuevo Contratante</h1>
-<%= simple_form_for @contractor do |f| %>
-  <%= f.input :name %>
-  <%= f.input :rif %>
-  <%= f.input :address %>
-  <%= f.input :email %>
-  <%= f.input :phone %>
-  <%= f.submit %>
-<% end %>
+<%= render "form" %>

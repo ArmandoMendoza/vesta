@@ -23,6 +23,14 @@ class ContractorsController < ApplicationController
     end
   end
 
+  def update
+    if @contractor.update(contractor_params)
+      redirect_to contractor_path(@contractor)
+    else
+      render :edit
+    end
+  end
+
   private
     def set_contractor
       @contractor = Contractor.find(params[:id])
