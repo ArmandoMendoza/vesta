@@ -4,7 +4,11 @@ Vesta::Application.routes.draw do
   root "home#index"
   get "dashboard/index", as: "dashboard"
 
-  resources :contractors
-  resources :sub_contractors
+  resources :contractors do
+    resources :users
+  end
 
+  resources :sub_contractors do
+    resources :users
+  end
 end
