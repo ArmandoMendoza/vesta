@@ -1,9 +1,16 @@
 es:
   activerecord:
     models:
+      user: "Usuario"
       contractor: "Contratante"
       sub_contractor: "Contratista"
+      project: "Proyecto"
+      collaborator: "Colaborador"
     attributes:
+      user:
+        first_name: "Nombre"
+        last_name: "Apellido"
+        phone: "Telefono"
       contractor:
         name: "Nombre"
         phone: "Telefono"
@@ -12,3 +19,17 @@ es:
         name: "Nombre"
         phone: "Telefono"
         address: "Direccion"
+      project:
+        name: "Nombre"
+        contract_number: "Nro Contrato"
+        init_date: "Fecha de Inicio"
+        finish_date: "Fecha de Finalizacion"
+        budget: "Presupuesto"
+        advance: "Anticipo"
+        state: "Estatus"
+        contractor_id: "Contratante"
+        sub_contractor_id: "Contratista"
+      collaborator:
+        user_id: "Usuario"
+        project_id: "Proyecto"
+        collaborator_type: "Tipo"
