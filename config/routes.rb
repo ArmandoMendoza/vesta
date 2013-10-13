@@ -5,4 +5,6 @@ Vesta::Application.routes.draw do
   get "dashboard/index", as: "dashboard"
 
   resources :contractors
+  resources :sub_contractors
+
 end

@@ -1,0 +1,14 @@
+es:
+  activerecord:
+    models:
+      contractor: "Contratante"
+      sub_contractor: "Contratista"
+    attributes:
+      contractor:
+        name: "Nombre"
+        phone: "Telefono"
+        address: "Direccion"
+      sub_contractor:
+        name: "Nombre"
+        phone: "Telefono"
+        address: "Direccion"

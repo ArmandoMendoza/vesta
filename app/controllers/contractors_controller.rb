@@ -35,6 +35,7 @@ class ContractorsController < ApplicationController
     def set_contractor
       @contractor = Contractor.find(params[:id])
     end
+
     def contractor_params
       params.require(:contractor).permit(:name, :rif, :address, :phone, :email)
     end

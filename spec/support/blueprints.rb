@@ -3,7 +3,7 @@ require 'machinist/active_record'
 Contractor.blueprint do
   name { Faker::Name.name }
   address { "#{Faker::Address.street_address}, #{Faker::Address.city}"}
-  rif { "J-12345678-#{sn}"}
+  rif { "J-123456#{sn}-1"}
   phone { "276-3535340" }
   email { Faker::Internet.email }
 end
@@ -11,7 +11,7 @@ end
 SubContractor.blueprint do
   name { Faker::Name.name }
   address { "#{Faker::Address.street_address}, #{Faker::Address.city}"}
-  rif { "J-98765432-#{sn}"}
+  rif { "J-123456#{sn}-1"}
   phone { "276-3535340" }
   email { Faker::Internet.email }
 end

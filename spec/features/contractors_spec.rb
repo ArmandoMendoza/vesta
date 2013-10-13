@@ -42,7 +42,7 @@ describe "Contractors" do
           fill_in :contractor_address, with: "San Cristobal"
           fill_in :contractor_phone, with: "276-3535340"
           fill_in :contractor_email, with: "coopnova@hotmail.com"
-          click_button "Crear Contractor"
+          click_button "Crear Contratante"
         end
         expect(page).to have_content("Contratante Cooperativa Nova")
         expect(page).to have_content("J-31446097-8")
@@ -61,7 +61,7 @@ describe "Contractors" do
           fill_in :contractor_address, with: ""
           fill_in :contractor_phone, with: "02763535340"
           fill_in :contractor_email, with: ""
-          click_button "Crear Contractor"
+          click_button "Crear Contratante"
         end
         expect(page).to have_content(I18n.t("errors.messages.invalid"))
         expect(page).to have_content(I18n.t("errors.messages.blank"))
@@ -69,13 +69,13 @@ describe "Contractors" do
     end
   end
 
-  describe "User edit a contractor", js: true do
+  describe "User edit a contractor" do
     it "should show the edited info of contractor" do
       contractor = Contractor.make!
       visit edit_contractor_path(contractor)
       within('form') do
         fill_in :contractor_name, with: "Cooperativa Nova"
-        click_button "Actualizar Contractor"
+        click_button "Actualizar Contratante"
       end
       expect(page).to have_content("Contratante Cooperativa Nova")
     end
