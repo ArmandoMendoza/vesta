@@ -1,0 +1,29 @@
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <!-- navbar-fixed-top -->
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse"
+        data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "VESTA", dashboard_path, class: "navbar-brand" %>
+      <!-- <a class="navbar-brand" href="">VESTA</a> -->
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Contratistas", sub_contractors_path %></li>
+        <li><%= link_to "Contratantes", contractors_path %></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Salir", destroy_user_session_path, method: :delete %></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+</nav>
