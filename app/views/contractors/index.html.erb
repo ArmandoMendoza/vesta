@@ -1,0 +1,20 @@
+<h1>Contratantes</h1>
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Rif</th>
+    <th>Direccion</th>
+    <th>Telefono</th>
+    <th>Email</th>
+  </tr>
+  <%= @contractors.each do |contractor| %>
+    <tr>
+      <td><%= contractor.name %></td>
+      <td><%= contractor.rif %></td>
+      <td><%= contractor.address %></td>
+      <td><%= contractor.phone %></td>
+      <td><%= contractor.email %></td>
+    </tr>
+  <% end %>
+</table>
+
