@@ -58,10 +58,10 @@ class UsersController < ApplicationController
     end
 
     def check_params_password
-      if params[:usuario][:password].blank?
-        params[:usuario].delete(:password)
-        if params[:usuario][:password_confirmation].blank?
-          params[:usuario].delete(:password_confirmation)
+      if params[:user][:password].blank?
+        params[:user].delete(:password)
+        if params[:user][:password_confirmation].blank?
+          params[:user].delete(:password_confirmation)
         end
       end
     end
