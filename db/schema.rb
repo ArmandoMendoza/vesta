@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131012234513) do
+ActiveRecord::Schema.define(version: 20131014020725) do
 
   create_table "collaborators", force: true do |t|
     t.string   "collaborator_type"
@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(version: 20131012234513) do
     t.integer  "sub_contractor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address"
+    t.string   "address_city"
+    t.string   "address_municipality"
+    t.string   "address_state"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "sub_contractors", force: true do |t|

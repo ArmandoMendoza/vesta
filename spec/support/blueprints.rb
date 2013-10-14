@@ -87,4 +87,10 @@ Project.blueprint do
   contract_number { "112233-#{sn}" }
   contractor { Contractor.make! }
   sub_contractor { SubContractor.make! }
+  address { Faker::Address.street_address }
+  address_city { "San Cristobal"}
+  address_municipality { "San Cristobal" }
+  address_state { "Tachira" }
+  latitude { 0 }
+  longitude { 0 }
 end

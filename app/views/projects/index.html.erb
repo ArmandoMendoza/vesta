@@ -1,0 +1,20 @@
+<%= table_panel("LISTADO DE PROYECTOS") do %>
+  <tr>
+    <td>Estatus</td>
+    <th>Nombre</th>
+    <th>Nro Contrato</th>
+    <th>Presupuesto</th>
+    <th>Fecha de Inicio</th>
+    <th>Fecha de Culminacion</th>
+  </tr>
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= project.state %></td>
+      <td><%= project.name %></td>
+      <td><%= project.contract_number %></td>
+      <td><%= project.budget %></td>
+      <td><%= project.init_date %></td>
+      <td><%= project.finish_date %></td>
+    </tr>
+  <% end %>
+<% end %>

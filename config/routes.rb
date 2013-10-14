@@ -1,8 +1,8 @@
 Vesta::Application.routes.draw do
 
-  devise_for :users
   root "home#index"
-  get "dashboard/index", as: "dashboard"
+
+  devise_for :users
 
   resources :contractors do
     resources :users
@@ -11,4 +11,9 @@ Vesta::Application.routes.draw do
   resources :sub_contractors do
     resources :users
   end
+
+  resources :projects
+
+  get "dashboard", to: "dashboard#index"
+
 end
