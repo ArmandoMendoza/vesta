@@ -9,8 +9,11 @@ class User < ActiveRecord::Base
   has_many :projects, through: :collaborators
   belongs_to :company, polymorphic: true
 
+  #### Validations ###
+  validates_presence_of :first_name, :last_name, :user_type
+
   #### Callbacks ####
-  before_save :set_user_type
+  before_validation :set_user_type
 
   #### Instance Methods ####
 
