@@ -1,0 +1,17 @@
+<%= table_panel("LISTADO DE COLABORADORES") do %>
+  <tr>
+    <th>Nombre</th>
+    <th>Tipo de Colaboracion</th>
+  </tr>
+  <% @collaborators.each do |collaborator| %>
+    <tr>
+      <!-- eager loading here! -->
+      <td><%= collaborator.user.full_name %></td>
+      <td><%= collaborator.collaborator_type %></td>
+    </tr>
+  <% end %>
+<% end %>
+
+
+
+

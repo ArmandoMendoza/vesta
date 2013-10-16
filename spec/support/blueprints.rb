@@ -94,3 +94,15 @@ Project.blueprint do
   latitude { 0 }
   longitude { 0 }
 end
+
+Collaborator.blueprint(:contractor_inspector) do
+  user { User.make!(:contractor_regular) }
+  project { Project.make! }
+  collaborator_type { "Inspector" }
+end
+
+Collaborator.blueprint(:sub_contractor_inspector) do
+  user { User.make!(:sub_contractor_regular) }
+  project { Project.make! }
+  collaborator_type { "Residente" }
+end

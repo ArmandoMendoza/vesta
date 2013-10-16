@@ -12,7 +12,9 @@ Vesta::Application.routes.draw do
     resources :users
   end
 
-  resources :projects
+  resources :projects do
+    resources :collaborators, except: :show
+  end
 
   get "dashboard", to: "dashboard#index"
 
