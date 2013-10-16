@@ -1,9 +1,8 @@
 class SubContractorsController < ApplicationController
-  before_action :set_sub_contractor, except: [:index, :new, :create]
   before_action :set_sub_contractor_params, only: [:create, :update]
+  load_and_authorize_resource :sub_contractor
 
   def index
-    @sub_contractors = SubContractor.all
   end
 
   def show
@@ -13,11 +12,9 @@ class SubContractorsController < ApplicationController
   end
 
   def new
-    @sub_contractor = SubContractor.new
   end
 
   def create
-    @sub_contractor = SubContractor.new(params[:sub_contractor])
     if @sub_contractor.save
       redirect_to sub_contractor_path(@sub_contractor)
     else
@@ -34,10 +31,6 @@ class SubContractorsController < ApplicationController
   end
 
   private
-    def set_sub_contractor
-      @sub_contractor = SubContractor.find(params[:id])
-    end
-
     def set_sub_contractor_params
       params[:sub_contractor] = params.require(:sub_contractor).permit!
     end

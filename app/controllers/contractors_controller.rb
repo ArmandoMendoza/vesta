@@ -1,9 +1,8 @@
 class ContractorsController < ApplicationController
-  before_action :set_contractor, except: [:index, :new, :create]
   before_action :set_contractor_params, only: [:create, :update]
+  load_and_authorize_resource :contractor
 
   def index
-    @contractors = Contractor.all
   end
 
   def show
@@ -13,11 +12,9 @@ class ContractorsController < ApplicationController
   end
 
   def new
-    @contractor = Contractor.new
   end
 
   def create
-    @contractor = Contractor.new(params[:contractor])
     if @contractor.save
       redirect_to contractor_path(@contractor)
     else
@@ -34,10 +31,6 @@ class ContractorsController < ApplicationController
   end
 
   private
-    def set_contractor
-      @contractor = Contractor.find(params[:id])
-    end
-
     def set_contractor_params
       params[:contractor] = params.require(:contractor).permit!
     end

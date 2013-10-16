@@ -1,10 +1,8 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, except: [:index, :new, :create]
   before_action :set_project_params, only: [:create, :update]
-
+  load_and_authorize_resource :project
 
   def index
-    @projects = Project.all
   end
 
   def show
@@ -14,11 +12,9 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = Project.new
   end
 
   def create
-    @project = Project.new(params[:project])
     if @project.save
       redirect_to project_path(@project)
     else
@@ -35,10 +31,6 @@ class ProjectsController < ApplicationController
   end
 
   private
-    def set_project
-      @project = Project.find(params[:id])
-    end
-
     def set_project_params
       params[:project] = params.require(:project).permit!
     end
