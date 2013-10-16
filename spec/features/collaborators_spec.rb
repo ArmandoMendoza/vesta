@@ -4,13 +4,13 @@ describe "Collaborators" do
   before do
     @contractor_owner = User.make!(:contractor_owner)
     @project = Project.make!(contractor: @contractor_owner.company)
-    login @contractor_owner
   end
 
   describe "User visit index" do
     before do
       user = User.make!(:contractor_regular, company: @contractor_owner.company)
       Collaborator.make!(:contractor_inspector, user: user, project: @project)
+      login @contractor_owner
     end
 
     it "should have a table with all collaborators" do
@@ -29,6 +29,7 @@ describe "Collaborators" do
       company = @contractor_owner.company
       @user = User.make!(:contractor_regular, company: company)
       @other_user = User.make!(:contractor_regular, company: company)
+      login @contractor_owner
     end
 
     context "with valid values" do
@@ -64,7 +65,8 @@ describe "Collaborators" do
   end
 
   describe "User edit a collaborator" do
-    it "should show the edited info of contractor" do
+    it "should show the edited info of contractor", js: true do
+      login @contractor_owner
       user = User.make!(:contractor_regular, company: @contractor_owner.company)
       collaborator = Collaborator.make!(:contractor_inspector, user: user, project: @project)
       other_user = User.make!(:contractor_regular, company: @contractor_owner.company)

@@ -11,7 +11,7 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
-  config.extend ControllerHelpers, type: :controller
+  config.include ControllerHelpers, type: :controller
   config.include FeatureHelpers, type: :feature
 
   config.mock_with :rspec

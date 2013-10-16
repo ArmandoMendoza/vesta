@@ -43,14 +43,11 @@ describe "Users" do
     context "with valid values" do
 
       context "User is admin" do
-        before do
-          @admin = User.make!(:contractor_admin)
-          @contractor = Contractor.make!
-          login @admin
-        end
-
         it "should show the info of new user" do
-          visit new_contractor_user_path(@contractor)
+          admin = User.make!(:contractor_admin)
+          contractor = Contractor.make!
+          login admin
+          visit new_contractor_user_path(contractor)
           expect(page).to have_selector('#user_user_type')
           within('form#new_user') do
             fill_in :user_first_name, with: "Armando"
@@ -71,14 +68,12 @@ describe "Users" do
       end
 
       context "User is owner" do
-        before do
-          @owner = User.make!(:contractor_owner)
-          @contractor = Contractor.make!
-          login @owner
-        end
 
         it "should show the info of new user" do
-          visit new_contractor_user_path(@contractor)
+          owner = User.make!(:contractor_owner)
+          contractor = owner.company
+          login owner
+          visit new_contractor_user_path(contractor)
           expect(page).to_not have_selector('#user_user_type')
           within('form#new_user') do
             fill_in :user_first_name, with: "Armando"
@@ -101,7 +96,7 @@ describe "Users" do
     context "with invalid values" do
       it "should show the errors on the form" do
         owner = User.make!(:contractor_owner)
-        contractor = Contractor.make!
+        contractor = owner.company
         login owner
         visit new_contractor_user_path(contractor)
         within('form#new_user') do

@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
     user_type == USER_TYPE[:regular]
   end
 
+  def company_type
+    company.class.to_s if company.present?
+  end
+
   private
     def set_user_type
       self.user_type ||= USER_TYPE[:regular]
