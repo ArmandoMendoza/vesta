@@ -32,7 +32,5 @@ describe Project do
       expect(project.error_on(:init_date)).to include("fecha de Inicio debe ser menor a fecha de Culminacion")
     end
   end
-
 end
-# otro_consumo.should have(1).error_on(:nro_documento)
-# otro_consumo.errors_on(:nro_documento).should include(I18n.t("errors.messages.taken"))
+
