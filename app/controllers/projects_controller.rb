@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, except: [:index, :new, :create]
+  before_action :set_project_params, only: [:create, :update]
+
 
   def index
     @projects = Project.all
@@ -16,7 +18,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
+    @project = Project.new(params[:project])
     if @project.save
       redirect_to project_path(@project)
     else
@@ -25,7 +27,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    if @project.update(project_params)
+    if @project.update(params[:project])
       redirect_to project_path(@project)
     else
       render :edit
@@ -37,8 +39,8 @@ class ProjectsController < ApplicationController
       @project = Project.find(params[:id])
     end
 
-    def project_params
-      params.require(:project).permit!
+    def set_project_params
+      params[:project] = params.require(:project).permit!
     end
 end
 

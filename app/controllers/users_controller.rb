@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :get_company
   before_action :get_user, except: [:index, :new, :create]
+  before_action :set_user_params, only: [:create, :update]
   before_action :check_params_password, only: :update
 
   def index
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(params[:user])
     if @company.users << @user
       redirect_to [@company, @user]
     else
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    if @user.update(params[:user])
       redirect_to [@company, @user]
     else
       render :edit
@@ -36,8 +37,8 @@ class UsersController < ApplicationController
 
   private
 
-    def user_params
-      if current_user.admin?
+    def set_user_params
+      params[:user] = if current_user.admin?
         params.require(:user).permit!
       else
         params.require(:user).permit(:first_name, :last_name, :phone, :email,

@@ -1,5 +1,7 @@
 class ContractorsController < ApplicationController
   before_action :set_contractor, except: [:index, :new, :create]
+  before_action :set_contractor_params, only: [:create, :update]
+
   def index
     @contractors = Contractor.all
   end
@@ -15,7 +17,7 @@ class ContractorsController < ApplicationController
   end
 
   def create
-    @contractor = Contractor.new(contractor_params)
+    @contractor = Contractor.new(params[:contractor])
     if @contractor.save
       redirect_to contractor_path(@contractor)
     else
@@ -24,7 +26,7 @@ class ContractorsController < ApplicationController
   end
 
   def update
-    if @contractor.update(contractor_params)
+    if @contractor.update(params[:contractor])
       redirect_to contractor_path(@contractor)
     else
       render :edit
@@ -36,7 +38,7 @@ class ContractorsController < ApplicationController
       @contractor = Contractor.find(params[:id])
     end
 
-    def contractor_params
-      params.require(:contractor).permit(:name, :rif, :address, :phone, :email)
+    def set_contractor_params
+      params[:contractor] = params.require(:contractor).permit!
     end
 end
