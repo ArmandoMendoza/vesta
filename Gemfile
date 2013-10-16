@@ -7,6 +7,7 @@ gem 'pg'
 gem 'jbuilder', '~> 1.2'
 gem 'turbolinks'
 gem 'simple_form'
+gem 'cancan'
 
 # assets
 gem 'sass-rails', '~> 4.0.0'
