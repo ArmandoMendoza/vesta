@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
 gem 'compass-rails', '~> 2.0.alpha.0'
+gem 'jquery-turbolinks'
 
 group :doc do
   gem 'sdoc', require: false
