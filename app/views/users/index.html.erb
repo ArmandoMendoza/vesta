@@ -13,6 +13,12 @@
       <td><%= user.email %></td>
       <td><%= user.phone %></td>
       <td><%= user.user_type %></td>
+      <% if can? :read, user %>
+        <td><%= link_to_show "detalles", [@company, user] %></td>
+      <% end %>
+      <% if can? :edit, user %>
+        <td><%= link_to_edit "editar", [:edit, @company, user] %></td>
+      <% end %>
     </tr>
   <% end %>
 <% end %>

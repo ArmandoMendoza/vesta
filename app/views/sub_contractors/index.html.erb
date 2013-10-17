@@ -13,6 +13,15 @@
       <td><%= sub_contractor.address %></td>
       <td><%= sub_contractor.phone %></td>
       <td><%= sub_contractor.email %></td>
+      <% if can? :read, sub_contractor %>
+        <td><%= link_to_show "detalles", sub_contractor_path(sub_contractor) %></td>
+      <% end %>
+      <% if can? :edit, sub_contractor %>
+        <td><%= link_to_edit "editar", edit_sub_contractor_path(sub_contractor) %></td>
+      <% end %>
+      <% if can? :read, User %>
+        <td><%= link_to "usuarios", sub_contractor_users_path(sub_contractor) %></td>
+      <% end %>
     </tr>
   <% end %>
 <% end %>

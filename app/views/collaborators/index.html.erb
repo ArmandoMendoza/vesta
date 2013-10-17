@@ -8,6 +8,9 @@
       <!-- eager loading here! -->
       <td><%= collaborator.user.full_name %></td>
       <td><%= collaborator.collaborator_type %></td>
+      <% if can? :edit, collaborator %>
+        <td><%= link_to_edit "editar", edit_project_collaborator_path(@project, collaborator) %></td>
+      <% end %>
     </tr>
   <% end %>
 <% end %>
