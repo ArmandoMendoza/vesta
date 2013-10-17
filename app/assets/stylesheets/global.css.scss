@@ -1,3 +1,24 @@
 @import "compass/utilities/sprites";
+
+@mixin action-icon($sprite) {
+  @include icon-sprite($sprite);
+  width: icon-sprite-width($sprite);
+  height: icon-sprite-height($sprite);
+  display: block;
+  text-indent: -999px;
+  overflow: hidden;
+}
+
+@mixin table-icon-action($icon) {
+  a.#{$icon} { @include action-icon(action-#{$icon}-default); }
+  a.#{$icon}:hover { @include action-icon(action-#{$icon}-active); }
+  span.#{$icon} { @include action-icon(action-#{$icon}-disabled); }
+}
+
 @import "icon/*.png";
 @include all-icon-sprites;
+
+.table {
+  @include table-icon-action("edit");
+  @include table-icon-action("show");
+}

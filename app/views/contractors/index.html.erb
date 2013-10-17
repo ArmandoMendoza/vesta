@@ -13,10 +13,9 @@
       <td><%= contractor.address %></td>
       <td><%= contractor.phone %></td>
       <td><%= contractor.email %></td>
+      <td><%= link_to_show "detalles", contractor_path(contractor) %></td>
+      <td><%= link_to_edit "editar", edit_contractor_path(contractor) %></td>
     </tr>
   <% end %>
 <% end %>
-
-
-
 
