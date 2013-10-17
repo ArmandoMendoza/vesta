@@ -16,21 +16,21 @@ class Ability
       can :manage, :all
     end
 
+    def owner_sub_contractor_abilities(user)
+      can :read, [Contractor, SubContractor]
+      can :manage, Project, sub_contractor_id: user.company.id
+      can :manage, User, company_id: user.company.id
+      can :update, SubContractor, id: user.company.id
+      can :manage, Collaborator, project: { company_id: user.company.id },
+        user: { company_id: user.company.id }
+      can :create, Collaborator
+    end
+
     def owner_contractor_abilities(user)
       can :read, [Contractor, SubContractor, Project]
       can :manage, User, company_id: user.company.id
       can :update, Contractor, id: user.company.id
       can :manage, Collaborator, project: { contractor_id: user.company.id },
-        user: { company_id: user.company.id }
-      can :create, Collaborator
-    end
-
-    def owner_sub_contractor_abilities(user)
-      can :read, [Contractor, SubContractor]
-      can :manage, Project, company_id: user.company.id
-      can :manage, User, company_id: user.company.id
-      can :update, Contractor, id: user.company.id
-      can :manage, Collaborator, project: { company_id: user.company.id },
         user: { company_id: user.company.id }
       can :create, Collaborator
     end
