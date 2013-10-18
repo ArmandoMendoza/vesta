@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :load_and_authorize_company
   before_action :set_user_params, only: [:create, :update]
   before_action :check_params_password, only: :update
-  load_and_authorize_resource :user, :through => :company
+  load_and_authorize_resource :user, through: :company
 
   def index
   end
@@ -33,7 +33,6 @@ class UsersController < ApplicationController
   end
 
   private
-
     def load_and_authorize_company
       if params[:contractor_id]
         @company = Contractor.find(params[:contractor_id])
