@@ -102,7 +102,7 @@ Collaborator.blueprint(:contractor_inspector) do
   collaborator_type { "Inspector" }
 end
 
-Collaborator.blueprint(:sub_contractor_inspector) do
+Collaborator.blueprint(:sub_contractor_residente) do
   user { User.make!(:sub_contractor_regular) }
   project { Project.make! }
   collaborator_type { "Residente" }

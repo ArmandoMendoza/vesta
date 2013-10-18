@@ -2,15 +2,15 @@ require 'spec_helper'
 
 describe "Collaborators" do
   before do
-    @contractor_owner = User.make!(:contractor_owner)
-    @project = Project.make!(contractor: @contractor_owner.company)
+    @sub_contractor_owner = User.make!(:sub_contractor_owner)
+    @project = Project.make!(sub_contractor: @sub_contractor_owner.company)
   end
 
   describe "User visit index" do
     before do
-      user = User.make!(:contractor_regular, company: @contractor_owner.company)
-      Collaborator.make!(:contractor_inspector, user: user, project: @project)
-      login @contractor_owner
+      user = User.make!(:sub_contractor_regular, company: @sub_contractor_owner.company)
+      Collaborator.make!(:sub_contractor_residente, user: user, project: @project)
+      login @sub_contractor_owner
     end
 
     it "should have a table with all collaborators" do
@@ -26,10 +26,10 @@ describe "Collaborators" do
 
   describe "User create a new collaborator" do
     before do
-      company = @contractor_owner.company
-      @user = User.make!(:contractor_regular, company: company)
-      @other_user = User.make!(:contractor_regular, company: company)
-      login @contractor_owner
+      company = @sub_contractor_owner.company
+      @user = User.make!(:sub_contractor_regular, company: company)
+      @other_user = User.make!(:sub_contractor_regular, company: company)
+      login @sub_contractor_owner
     end
 
     context "with valid values" do
@@ -37,11 +37,11 @@ describe "Collaborators" do
         visit new_project_collaborator_path(@project)
         within('form#new_collaborator') do
           select @user.full_name, from: "collaborator_user_id"
-          select "Inspector", from: "collaborator_collaborator_type"
+          select "Residente", from: "collaborator_collaborator_type"
           click_button "Crear Colaborador"
         end
         expect(page).to have_content(@user.full_name)
-        expect(page).to have_content("Inspector")
+        expect(page).to have_content("Residente")
       end
     end
 
@@ -50,13 +50,13 @@ describe "Collaborators" do
         visit new_project_collaborator_path(@project)
         within('form#new_collaborator') do
           select @user.full_name, from: "collaborator_user_id"
-          select "Inspector", from: "collaborator_collaborator_type"
+          select "Residente", from: "collaborator_collaborator_type"
           click_button "Crear Colaborador"
         end
         visit new_project_collaborator_path(@project)
         within('form#new_collaborator') do
           select @other_user.full_name, from: "collaborator_user_id"
-          select "Inspector", from: "collaborator_collaborator_type"
+          select "Residente", from: "collaborator_collaborator_type"
           click_button "Crear Colaborador"
         end
         expect(page).to have_content(I18n.t("errors.messages.taken"))
@@ -66,10 +66,10 @@ describe "Collaborators" do
 
   describe "User edit a collaborator" do
     it "should show the edited info of contractor", js: true do
-      login @contractor_owner
-      user = User.make!(:contractor_regular, company: @contractor_owner.company)
-      collaborator = Collaborator.make!(:contractor_inspector, user: user, project: @project)
-      other_user = User.make!(:contractor_regular, company: @contractor_owner.company)
+      login @sub_contractor_owner
+      user = User.make!(:sub_contractor_regular, company: @sub_contractor_owner.company)
+      other_user = User.make!(:sub_contractor_regular, company: @sub_contractor_owner.company)
+      collaborator = Collaborator.make!(:sub_contractor_residente, user: user, project: @project)
       visit edit_project_collaborator_path(@project, collaborator)
       within('form') do
         select other_user.full_name, from: "collaborator_user_id"

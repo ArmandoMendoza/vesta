@@ -16,4 +16,9 @@ module ControllerHelpers
     @request.env["devise.mapping"] = Devise.mappings[:sub_contractor_owner]
     sign_in @sub_contractor_owner
   end
+
+  def login(user)
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in user
+  end
 end

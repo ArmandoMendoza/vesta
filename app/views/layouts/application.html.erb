@@ -12,6 +12,12 @@
 
     <!-- CONTENT -->
     <div class="container">
+      <% if user_signed_in? %>
+        <%= current_user.user_type %>
+        <%= current_user.company.name %>
+        <%= current_user.company_type %>
+
+        <% end %>
       <div class="row">
         <div class="col-md-12">
           <%= yield %>
