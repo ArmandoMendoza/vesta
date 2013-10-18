@@ -1,4 +1,5 @@
-<%= table_panel("LISTADO DE CONTRATANTES") do %>
+<%= table_panel("LISTADO DE CONTRANTES", (can?(:create, Contractor)),
+  button_options: { text: "Nuevo Contratante", url: new_contractor_path }) do %>
   <tr>
     <th>Nombre</th>
     <th>Rif</th>

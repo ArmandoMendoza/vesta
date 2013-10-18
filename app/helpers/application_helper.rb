@@ -11,13 +11,30 @@ module ApplicationHelper
     end
   end
 
-  def table_panel(title, class_table = "table table-condensed")
+  def table_panel(title, button = false, *args)
+    options = args.extract_options!
+    options[:table_class] ||= "table table-condensed"
+    content_header = raw(title)
+    if button
+      options[:button_options] ||= {}
+      content_header << content_tag(:div, table_link_to_new(options[:button_options]),
+        style: "float:right")
+    end
     content_tag(:div, class: "panel panel-default") do
-      content_tag(:div, title, class: "panel-heading") +
-      content_tag(:table, class: class_table) do
+      content_tag(:div, class: "panel-heading") do
+        content_header
+      end +
+      content_tag(:table, class: options[:table_class]) do
         yield
       end
     end
+  end
+
+  def table_link_to_new(options)
+    options[:text] ||= "Nuevo"
+    options[:url] ||= "#"
+    options[:class] ||= "btn btn-success btn-xs"
+    link_to options[:text], options[:url], class: options[:class]
   end
 
   def link_to_edit(text, *args)

@@ -1,4 +1,5 @@
-<%= table_panel("LISTADO DE PROYECTOS") do %>
+<%= table_panel("PROYECTOS", (can?(:create, Project)),
+  button_options: { text: "Nuevo Proyecto", url: new_project_path }) do %>
   <tr>
     <th>Estatus</th>
     <th>Nombre</th>

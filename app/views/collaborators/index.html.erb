@@ -1,4 +1,5 @@
-<%= table_panel("LISTADO DE COLABORADORES") do %>
+<%= table_panel("LISTADO DE COLABORADORES", (can?(:create, Collaborator)),
+  button_options: { text: "Nuevo colaborador", url: new_project_collaborator_path(@project) }) do %>
   <tr>
     <th>Nombre</th>
     <th>Tipo de Colaboracion</th>

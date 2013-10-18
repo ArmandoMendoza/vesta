@@ -1,4 +1,5 @@
-<%= table_panel("USUARIOS DE #{@company.name}") do %>
+<%= table_panel("USUARIOS DE #{@company.name}", (can?(:create, User)),
+  button_options: { text: "Nuevo Usuario", url: [:new, @company, :user] }) do %>
   <tr>
     <th>Nombre</th>
     <th>Apellido</th>
