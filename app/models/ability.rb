@@ -17,30 +17,34 @@ class Ability
     end
 
     def owner_sub_contractor_abilities(user)
-      can :read, [SubContractor, Contractor, User]
+      can :read, [SubContractor, Contractor, User, Project, Collaborator]
       can :update, SubContractor, id: user.company.id
       can [:create, :update], User do |company_user|
         company_user.company == user.company
       end
-
-      can :manage, Project, sub_contractor_id: user.company.id
-      can [:read, :create], Collaborator
-      can :update, Collaborator, project: { sub_contractor_id: user.company.id },
-        user: { company_id: user.company.id }
-      can :create, Collaborator
+      can [:create, :update], Project, sub_contractor_id: user.company.id
+      can :create, Collaborator do |collaborator|
+        collaborator.project.sub_contractor == user.company
+      end
+      can :update, Collaborator do |collaborator|
+        collaborator.project.sub_contractor == user.company &&
+        collaborator.user.company == user.company
+      end
     end
 
     def owner_contractor_abilities(user)
-      can :read, [SubContractor, Contractor, User]
+      can :read, [SubContractor, Contractor, User, Project, Collaborator]
       can :update, Contractor, id: user.company.id
       can [:create, :update], User do |company_user|
         company_user.company == user.company
       end
-
-      can :read, Project, contractor_id: user.company.id
-      can [:read, :create], Collaborator
-      can :update, Collaborator, project: { contractor_id: user.company.id },
-        user: { company_id: user.company.id }
+      can :create, Collaborator do |collaborator|
+        collaborator.project.contractor == user.company
+      end
+      can :update, Collaborator do |collaborator|
+        collaborator.project.contractor == user.company &&
+        collaborator.user.company == user.company
+      end
     end
 
     def regular_user
