@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Collaborators" do
+describe "Collaborators", js: true  do
   before do
     @sub_contractor_owner = User.make!(:sub_contractor_owner)
     @project = Project.make!(sub_contractor: @sub_contractor_owner.company)

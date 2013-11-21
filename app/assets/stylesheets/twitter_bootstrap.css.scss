@@ -1,5 +1,7 @@
-@import "bootstrap";
+// $navbar-height: 60px;
+$breadcrumb-bg: #47474A;
 
+@import "bootstrap";
 // Overwrite the rule table of Twiter Bootstrap
 .table thead > tr > th,
 .table thead > tr > td,

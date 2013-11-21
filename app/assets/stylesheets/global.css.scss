@@ -1,5 +1,21 @@
 @import "compass/utilities/sprites";
 
+body {
+  background: url("background.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+  color: #47474A;
+  font-family: "Open Sans",sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.3em;
+  padding-top: 50px;
+}
+.breadcrumb {
+  color: white;
+}
+.main-container {
+  background-color: white;
+}
+
 @mixin action-icon($sprite) {
   @include icon-sprite($sprite);
   width: icon-sprite-width($sprite);
@@ -9,10 +25,24 @@
   overflow: hidden;
 }
 
+@mixin menu-icon($sprite) {
+  @include icon-sprite($sprite);
+  width: icon-sprite-width($sprite);
+  height: icon-sprite-height($sprite);
+  display: block;
+  text-indent: -999px;
+  overflow: hidden;
+}
 @mixin table-icon-action($icon) {
   a.#{$icon} { @include action-icon(action-#{$icon}-default); }
   a.#{$icon}:hover { @include action-icon(action-#{$icon}-active); }
   span.#{$icon} { @include action-icon(action-#{$icon}-disabled); }
+}
+
+@mixin main-menu-icon($icon) {
+  a.#{$icon} { @include menu-icon(mainmenu-#{$icon}-default); }
+  a.#{$icon}:hover { @include menu-icon(mainmenu-#{$icon}-active); }
+  span.#{$icon} { @include menu-icon(mainmenu-#{$icon}-disabled); }
 }
 
 @import "icon/*.png";
@@ -21,4 +51,9 @@
 .table {
   @include table-icon-action("edit");
   @include table-icon-action("show");
+}
+.navbar-nav {
+  @include main-menu-icon("new-company");
+  @include main-menu-icon("new-institution");
+  @include main-menu-icon("new-project");
 }
