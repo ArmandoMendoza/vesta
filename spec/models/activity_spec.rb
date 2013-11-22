@@ -29,5 +29,16 @@ describe Activity do
         expect(activity.percent_of_the_project).to eq(0)
       end
     end
+
+    describe "create_first_execution" do
+      it "should create an execution with percent 0 when a activity is created" do
+        activity = Activity.new(name: "Activity 1", init_date: Date.today, execution_time: 20,
+          unit_execution_time: Activity::UNIT[:days])
+        activity.save
+        execution = activity.executions.last
+        expect(execution.date).to eq(Date.today)
+        expect(execution.percent).to eq(0)
+      end
+    end
   end
 end

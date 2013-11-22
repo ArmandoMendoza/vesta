@@ -3,15 +3,14 @@ class Execution < ActiveRecord::Base
   belongs_to :activity
 
   #### Validations ####
-  validates_presence_of :date, :percent
+  validates_presence_of :percent
   validates_numericality_of :percent
 
   #### Callbacks ####
-  before_create :set_defaults
+  before_create :set_date
 
   private
-    def set_defaults
+    def set_date
       self.date ||= Date.today
     end
-
 end
