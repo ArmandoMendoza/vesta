@@ -12,3 +12,10 @@
 <p>
 <%= @project.address %>
 </p>
+
+<% if can? :read, Activity %>
+  <td><%= link_to "Actividades", project_activities_path(@project) %></td>
+<% end %>
+<% if can? :read, Collaborator %>
+  <td><%= link_to "colaboradores", project_collaborators_path(@project) %></td>
+<% end %>

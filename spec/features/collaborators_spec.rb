@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Collaborators", js: true  do
+describe "Collaborators" do
   before do
     @sub_contractor_owner = User.make!(:sub_contractor_owner)
     @project = Project.make!(sub_contractor: @sub_contractor_owner.company)
@@ -65,7 +65,7 @@ describe "Collaborators", js: true  do
   end
 
   describe "User edit a collaborator" do
-    it "should show the edited info of contractor", js: true do
+    it "should show the edited info of contractor" do
       login @sub_contractor_owner
       user = User.make!(:sub_contractor_regular, company: @sub_contractor_owner.company)
       other_user = User.make!(:sub_contractor_regular, company: @sub_contractor_owner.company)

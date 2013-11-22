@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131014020725) do
+ActiveRecord::Schema.define(version: 20131122032555) do
+
+  create_table "activities", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.date     "init_date"
+    t.date     "finish_date"
+    t.integer  "execution_time"
+    t.string   "unit_execution_time"
+    t.integer  "percent_of_the_project"
+    t.string   "state"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activities", ["project_id"], name: "index_activities_on_project_id", using: :btree
 
   create_table "collaborators", force: true do |t|
     t.string   "collaborator_type"
@@ -30,6 +46,15 @@ ActiveRecord::Schema.define(version: 20131014020725) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "images", force: true do |t|
+    t.string   "description"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "images", ["project_id"], name: "index_images_on_project_id", using: :btree
 
   create_table "projects", force: true do |t|
     t.string   "name"

@@ -13,6 +13,7 @@ Vesta::Application.routes.draw do
   end
 
   resources :projects do
+    resources :activities
     resources :collaborators, except: :show
   end
 
