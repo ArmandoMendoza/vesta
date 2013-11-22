@@ -1,0 +1,30 @@
+<%= table_panel("PROYECTOS", (can?(:create, Project)),
+  button_options: { text: "Nuevo Proyecto", url: new_project_path }) do %>
+  <tr>
+    <th>Estatus</th>
+    <th>Nombre</th>
+    <th>Nro Contrato</th>
+    <th>Presupuesto</th>
+    <th>Inicio</th>
+    <th>Termino</th>
+  </tr>
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= project.state %></td>
+      <td><%= project.name %></td>
+      <td><%= project.contract_number %></td>
+      <td><%= project.budget %></td>
+      <td><%= project.init_date %></td>
+      <td><%= project.finish_date %></td>
+      <% if can? :read, project %>
+        <td><%= link_to_show "detalles", project_path(project) %></td>
+      <% end %>
+      <% if can? :edit, project %>
+        <td><%= link_to_edit "editar", edit_project_path(project) %></td>
+      <% end %>
+      <% if can? :read, Collaborator %>
+        <td><%= link_to "colaboradores", project_collaborators_path(project) %></td>
+      <% end %>
+    </tr>
+  <% end %>
+<% end %>

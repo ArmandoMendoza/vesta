@@ -1,0 +1,16 @@
+<%= simple_form_for @project do |f| %>
+  <%= f.input :name %>
+  <%= f.input :contract_number %>
+  <%= f.input :init_date %>
+  <%= f.input :finish_date %>
+  <%= f.input :budget %>
+  <%= f.input :advance %>
+  <%= f.association :contractor %>
+  <%= f.input :address %>
+  <%= f.input :address_city %>
+  <%= f.input :address_municipality %>
+  <%= f.input :address_state %>
+  <%= f.input :latitude %>
+  <%= f.input :longitude %>
+  <%= f.submit class: "btn btn-success" %>
+<% end %>
