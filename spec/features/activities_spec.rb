@@ -15,7 +15,7 @@ describe "Activities" do
     it "should have a table with all activities of projects" do
       visit project_activities_path(@project)
       within('table') do
-        @project.activities.all.each do |activities|
+        @project.activities.load.each do |activities|
           expect(page).to have_content(activities.name)
         end
       end
@@ -23,16 +23,14 @@ describe "Activities" do
   end
 
   describe "User visit show" do
-    before do
-      @activity = Activity.make!
-    end
     it "should have show all information of project" do
-      visit project_activity_path(@project, @activity)
-      expect(page).to have_content(@activity.name)
-      expect(page).to have_content(@activity.description)
-      expect(page).to have_content(@activity.init_date)
-      expect(page).to have_content(@activity.finish_date)
-      expect(page).to have_content(@activity.excution_time)
+      activity = Activity.make!(project: @project)
+      visit project_activity_path(@project, activity)
+      expect(page).to have_content(activity.name)
+      expect(page).to have_content(activity.description)
+      expect(page).to have_content(activity.init_date)
+      expect(page).to have_content(activity.finish_date)
+      expect(page).to have_content(activity.full_execution_time)
     end
   end
 
@@ -48,14 +46,14 @@ describe "Activities" do
           select "enero", from: :activity_init_date_2i
           select "2013", from: :activity_init_date_1i
           fill_in :activity_execution_time, with: "10"
-          fill_in :activity_unit_excution_time, with: Activity::UNIT[:days]
+          fill_in :activity_unit_execution_time, with: Activity::UNIT[:days]
           click_button "Crear Actividad"
         end
         expect(page).to have_content("Actividad de Pruebas")
         expect(page).to have_content("Nada de importancia")
         expect(page).to have_content("2013-01-01")
-        expect(page).to have_content("10 dias")
-        expect(page).to have_content("2013-01-10")
+        expect(page).to have_content("10 days")
+        expect(page).to have_content("2013-01-11")
       end
     end
 
@@ -66,7 +64,7 @@ describe "Activities" do
           fill_in :activity_name, with: ""
           fill_in :activity_description, with: "Nada de importancia"
           fill_in :activity_execution_time, with: ""
-          fill_in :activity_unit_excution_time, with: Activity::UNIT[:days]
+          fill_in :activity_unit_execution_time, with: Activity::UNIT[:days]
           click_button "Crear Actividad"
         end
         expect(page).to have_content(I18n.t("errors.messages.blank"))
@@ -76,10 +74,10 @@ describe "Activities" do
 
   describe "User edit activity" do
     it "should show the edited info of activity" do
-      @activity = Activity.make!(project: @project)
-      visit edit_project_activity_path(@project, @activity)
+      activity = Activity.make!(project: @project)
+      visit edit_project_activity_path(@project, activity)
       within('form') do
-        fill_in :project_name, with: "Actividad Editada"
+        fill_in :activity_name, with: "Actividad Editada"
         click_button "Actualizar Actividad"
       end
       expect(page).to have_content("Actividad Editada")

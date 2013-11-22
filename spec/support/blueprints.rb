@@ -117,5 +117,5 @@ Activity.blueprint do
   unit_execution_time { Activity::UNIT[:days] }
   percent_of_the_project { 5 }
   state { Activity::STATE[:executing] }
-  project_id { Project.make! }
+  project { Project.make! }
 end

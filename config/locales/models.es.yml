@@ -6,6 +6,7 @@ es:
       sub_contractor: "Contratista"
       project: "Proyecto"
       collaborator: "Colaborador"
+      activity: "Actividad"
     attributes:
       user:
         first_name: "Nombre"
@@ -42,3 +43,12 @@ es:
         user_id: "Usuario"
         project_id: "Proyecto"
         collaborator_type: "Tipo"
+      activity:
+        name: "Nombre"
+        description: "Descripcion"
+        init_date: "Fecha de Inicio"
+        finish_date: "Fecha de Culminacion"
+        execution_time: "Tiempo de Ejecucion"
+        unit_execution_time: "Unidad"
+        percent_of_the_project: "Porcentaje del Proyecto"
+        state: "Estatus"

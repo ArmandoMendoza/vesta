@@ -13,23 +13,23 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    if @project.collaborators << @collaborator
-      redirect_to [@project, :collaborators]
+    if @project.activities << @activity
+      redirect_to [@project, :activities]
     else
       render :new
     end
   end
 
   def update
-    if @collaborator.update(params[:collaborator])
-      redirect_to [@project, :collaborators]
+    if @activity.update(params[:activity])
+      redirect_to [@project, :activities]
     else
       render :edit
     end
   end
 
   private
-    def set_collaborator_params
-      params[:collaborator] = params.require(:collaborator).permit(:user_id, :collaborator_type)
+    def set_activity_params
+      params[:activity] = params.require(:activity).permit! #temporal
     end
 end

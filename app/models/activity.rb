@@ -12,6 +12,10 @@ class Activity < ActiveRecord::Base
   #### Callbacks ####
   before_create :set_finish_date, :set_defaults
 
+  def full_execution_time
+    "#{execution_time} #{unit_execution_time}"
+  end
+
   private
     def set_finish_date
       self.finish_date ||= init_date + execution_time.send(unit_execution_time)

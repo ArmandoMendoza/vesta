@@ -1,29 +1,26 @@
-<%= table_panel("PROYECTOS", (can?(:create, Project)),
-  button_options: { text: "Nuevo Proyecto", url: new_project_path }) do %>
+<%= table_panel("PROYECTOS", (can?(:create, Activity)),
+  button_options: { text: "Nueva Actividad", url: new_project_activity_path }) do %>
   <tr>
-    <th>Estatus</th>
     <th>Nombre</th>
-    <th>Nro Contrato</th>
-    <th>Presupuesto</th>
-    <th>Inicio</th>
-    <th>Termino</th>
+    <th>Descripcion</th>
+    <th>Fecha Inicio</th>
+    <th>Fecha Final</th>
+    <th>Tiempo de Ejecucion</th>
+    <th>Estatus</th>
   </tr>
-  <% @projects.each do |project| %>
+  <% @activities.each do |activity| %>
     <tr>
-      <td><%= project.state %></td>
-      <td><%= project.name %></td>
-      <td><%= project.contract_number %></td>
-      <td><%= project.budget %></td>
-      <td><%= project.init_date %></td>
-      <td><%= project.finish_date %></td>
-      <% if can? :read, project %>
-        <td><%= link_to_show "detalles", project_path(project) %></td>
+      <td><%= activity.name %></td>
+      <td><%= activity.description %></td>
+      <td><%= activity.init_date %></td>
+      <td><%= activity.finish_date %></td>
+      <td><%= activity.full_execution_time %></td>
+      <td><%= activity.state %></td>
+      <% if can? :read, activity %>
+        <td><%= link_to_show "detalles", project_activity_path(@project, activity) %></td>
       <% end %>
-      <% if can? :edit, project %>
-        <td><%= link_to_edit "editar", edit_project_path(project) %></td>
-      <% end %>
-      <% if can? :read, Collaborator %>
-        <td><%= link_to "colaboradores", project_collaborators_path(project) %></td>
+      <% if can? :edit, activity %>
+        <td><%= link_to_edit "editar", edit_project_activity_path(@project, activity) %></td>
       <% end %>
     </tr>
   <% end %>
