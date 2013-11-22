@@ -107,3 +107,15 @@ Collaborator.blueprint(:sub_contractor_residente) do
   project { Project.make! }
   collaborator_type { "Residente" }
 end
+
+Activity.blueprint do
+  name { "Actividad Nro-#{sn}"}
+  description { "Descripcion de Actividad" }
+  init_date { Date.today }
+  finish_date { Date.today + 10 }
+  execution_time { 10 }
+  unit_execution_time { Activity::UNIT[:days] }
+  percent_of_the_project { 5 }
+  state { Activity::STATE[:executing] }
+  project_id { Project.make! }
+end

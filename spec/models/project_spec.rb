@@ -6,6 +6,8 @@ describe Project do
   it { should belong_to(:sub_contractor) }
   it { should have_many(:collaborators) }
   it { should have_many(:users).through(:collaborators) }
+  it { should have_many(:activities) }
+
 
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:contract_number) }
