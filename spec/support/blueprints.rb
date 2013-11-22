@@ -119,3 +119,9 @@ Activity.blueprint do
   state { Activity::STATE[:executing] }
   project { Project.make! }
 end
+
+Execution.blueprint do
+  date { Date.today }
+  percent { 10 }
+  activity { Activity.make! }
+end

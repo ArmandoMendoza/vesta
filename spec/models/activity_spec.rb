@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Activity do
   it { should belong_to(:project) }
+  it { should have_many(:executions) }
 
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:init_date) }
