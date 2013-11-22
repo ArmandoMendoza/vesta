@@ -1,7 +1,14 @@
 class Activity < ActiveRecord::Base
   #### Constants ####
   STATE = { executing: "executing", stopped: "stopped", finished: "finished" }
-  UNIT = { hours: "hours", days: "days", weeks: "weeks", months: "months"}
+  UNIT = { hours: "hours", days: "days", weeks: "weeks", months: "months", years: "years" }
+  TRANSLATE_UNITS = {
+    I18n.t("execution_time_units.hours") => "hours",
+    I18n.t("execution_time_units.days") => "days",
+    I18n.t("execution_time_units.weeks") => "weeks",
+    I18n.t("execution_time_units.months") => "months",
+    I18n.t("execution_time_units.years") => "years",
+  }
 
   #### Relations ####
   belongs_to :project

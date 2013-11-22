@@ -1,0 +1,7 @@
+es:
+  execution_time_units:
+    hours: "Horas"
+    days: "Dias"
+    weeks: "Semanas"
+    months: "Meses"
+    years: "Años"
