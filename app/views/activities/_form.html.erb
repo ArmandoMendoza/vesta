@@ -3,6 +3,6 @@
   <%= f.input :description %>
   <%= f.input :init_date %>
   <%= f.input :execution_time %>
-  <%= f.input :unit_execution_time %>
+  <%= f.input :unit_execution_time, collection: Activity::TRANSLATED_UNITS %>
   <%= f.submit class: "btn btn-success" %>
 <% end %>

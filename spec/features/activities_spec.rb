@@ -46,7 +46,7 @@ describe "Activities" do
           select "enero", from: :activity_init_date_2i
           select "2013", from: :activity_init_date_1i
           fill_in :activity_execution_time, with: "10"
-          fill_in :activity_unit_execution_time, with: Activity::UNIT[:days]
+          select "Dias", from: :activity_unit_execution_time
           click_button "Crear Actividad"
         end
         expect(page).to have_content("Actividad de Pruebas")
@@ -63,11 +63,12 @@ describe "Activities" do
         within('form') do
           fill_in :activity_name, with: ""
           fill_in :activity_description, with: "Nada de importancia"
-          fill_in :activity_execution_time, with: ""
-          fill_in :activity_unit_execution_time, with: Activity::UNIT[:days]
+          fill_in :activity_execution_time, with: "AA"
+          select "Dias", from: :activity_unit_execution_time
           click_button "Crear Actividad"
         end
         expect(page).to have_content(I18n.t("errors.messages.blank"))
+        expect(page).to have_content(I18n.t("errors.messages.not_a_number"))
       end
     end
   end

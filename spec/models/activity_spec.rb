@@ -7,6 +7,8 @@ describe Activity do
   it { should validate_presence_of(:init_date) }
   it { should validate_presence_of(:execution_time) }
   it { should validate_presence_of(:unit_execution_time) }
+  it { should validate_numericality_of(:execution_time) }
+
 
   describe "Callbacks" do
     describe "set_finish_date" do

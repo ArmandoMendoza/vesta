@@ -2,7 +2,7 @@ class Activity < ActiveRecord::Base
   #### Constants ####
   STATE = { executing: "executing", stopped: "stopped", finished: "finished" }
   UNIT = { hours: "hours", days: "days", weeks: "weeks", months: "months", years: "years" }
-  TRANSLATE_UNITS = {
+  TRANSLATED_UNITS = {
     I18n.t("execution_time_units.hours") => "hours",
     I18n.t("execution_time_units.days") => "days",
     I18n.t("execution_time_units.weeks") => "weeks",
@@ -15,6 +15,7 @@ class Activity < ActiveRecord::Base
 
   #### Validations ####
   validates_presence_of :name, :init_date, :execution_time, :unit_execution_time
+  validates_numericality_of :execution_time
 
   #### Callbacks ####
   before_create :set_finish_date, :set_defaults
