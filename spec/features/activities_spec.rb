@@ -34,12 +34,16 @@ describe "Activities" do
       expect(page).to have_content(@activity.init_date)
       expect(page).to have_content(@activity.finish_date)
       expect(page).to have_content(@activity.full_execution_time)
-      expect(page).to have_content("Porcentaje de Ejecucion: #{@activity.current_execution.percent}%")
+      expect(page).to have_content("#{@activity.current_execution.percent}%")
     end
 
-    it "should have a form to create an execution to activity" do
-      expect(page).to have_selector('#new_execution')
-      expect(page).to have_selector('input#execution_percent')
+    it "should have a link to show a form to create an execution to activity", js: true do
+      click_link "Actualizar"
+      expect(page).to have_content("Actualizar Ejecucion")
+      expect(page).to have_select("execution_percent")
+      select "50", from: "execution_percent"
+      click_button "Actualizar"
+      expect(page).to have_content("50%")
     end
   end
 

@@ -1,22 +1,31 @@
 <h1>This is important Layout! WORK in it!</h1>
 <h2><%= @activity.name %></h2>
-<p>
-<%= @activity.description  %>
-</p>
-<p>
-<%= @activity.init_date  %>
-</p>
-<p>
-<%= @activity.finish_date  %>
-</p>
-<p>
-<%= @activity.full_execution_time %>
-</p>
-<p>
-<%= "Porcentaje de Ejecucion: #{@activity.current_execution.percent}%"  %>
-</p>
-
-<div>
-  <%= popover_to_execution_form(@execution, project_activity_execution_path(@project, @activity,
-    @execution)) %>
+<div class="row">
+  <div class="col-md-2 current-percent">
+    <%= "#{@activity.current_execution.percent}%"  %>
+    <%= progress_bar_of_execution(@activity) %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+    <%= @activity.description  %>
+    </p>
+    <p>
+    <%= @activity.init_date  %>
+    </p>
+    <p>
+    <%= @activity.finish_date  %>
+    </p>
+    <p>
+    <%= @activity.full_execution_time %>
+    </p>
+    <p>
+    <%= @activity.state %>
+    </p>
+    <p>
+    <%= popover_to_execution_form(@execution, project_activity_execution_path(@project, @activity,
+      @execution)) %>
+    </p>
+  </div>
 </div>
