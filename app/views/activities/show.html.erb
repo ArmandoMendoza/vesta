@@ -24,8 +24,10 @@
     <%= @activity.state %>
     </p>
     <p>
-    <%= popover_to_execution_form(@execution, project_activity_execution_path(@project, @activity,
-      @execution)) %>
+    <% if @activity.executing? %>
+        <%= popover_to_execution_form(@execution, project_activity_execution_path(@project, @activity,
+        @execution)) %>
+    <% end%>
     </p>
   </div>
 </div>

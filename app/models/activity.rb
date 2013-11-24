@@ -23,6 +23,17 @@ class Activity < ActiveRecord::Base
   after_create :create_first_execution
 
   #### Instance Methods ####
+  def executing?
+    state == STATE[:executing]
+  end
+
+  def stopped?
+    state == STATE[:stopped]
+  end
+
+  def finished?
+    state == STATE[:finished]
+  end
 
   def current_execution
     executions.last
