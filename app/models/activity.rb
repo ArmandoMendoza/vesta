@@ -1,4 +1,8 @@
 class Activity < ActiveRecord::Base
+  include ActsAsTree
+  extend ActsAsTree::Presentation
+  acts_as_tree order: "name"
+
   #### Constants ####
   STATE = { executing: "executing", stopped: "stopped", finished: "finished" }
   UNIT = { hours: "hours", days: "days", weeks: "weeks", months: "months", years: "years" }
