@@ -27,6 +27,15 @@ class Activity < ActiveRecord::Base
   after_create :create_first_execution
 
   #### Instance Methods ####
+
+  def has_parent?
+    parent.present?
+  end
+
+  def parent_finished?
+    parent.finished? if has_parent?
+  end
+
   def executing?
     state == STATE[:executing]
   end

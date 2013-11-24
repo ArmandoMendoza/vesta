@@ -24,10 +24,18 @@
     <%= @activity.state %>
     </p>
     <p>
-    <% if @activity.executing? %>
-        <%= popover_to_execution_form(@execution, project_activity_execution_path(@project, @activity,
-        @execution)) %>
-    <% end%>
+    <% if @activity.has_parent? %>
+      <p>Depende de: <%= @activity.parent.name %> </p>
+      <% if @activity.parent_finished? %>
+        <%= popover_to_execution_form(@execution, project_activity_execution_path(@project,
+            @activity, @execution)) %>
+      <% end %>
+    <% else %>
+      <% if @activity.executing? %>
+        <%= popover_to_execution_form(@execution, project_activity_execution_path(@project,
+            @activity, @execution)) %>
+        <% end %>
+    <% end %>
     </p>
   </div>
 </div>
