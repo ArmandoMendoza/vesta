@@ -1,6 +1,4 @@
 Vesta::Application.routes.draw do
-
-  get "executions/create"
   root "home#index"
 
   devise_for :users

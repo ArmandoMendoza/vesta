@@ -1,0 +1,6 @@
+<%= simple_form_for execution, html: { class: "form-inline", role: "form" }, url: url do |f| %>
+  <div class="form-group">
+    <%= f.input :percent, collection: percent_numbers_to(@activity), label: false %>
+  </div>
+    <%= f.submit "Actualizar", class: "btn" %>
+<% end %>
