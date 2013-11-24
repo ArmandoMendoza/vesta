@@ -10,7 +10,6 @@ describe Activity do
   it { should validate_presence_of(:unit_execution_time) }
   it { should validate_numericality_of(:execution_time) }
 
-
   describe "Callbacks" do
     describe "set_finish_date" do
       it "should set finish date with execution_time and unit_execution_time" do
