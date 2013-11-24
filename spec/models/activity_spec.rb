@@ -10,6 +10,18 @@ describe Activity do
   it { should validate_presence_of(:unit_execution_time) }
   it { should validate_numericality_of(:execution_time) }
 
+  describe "Instance methods" do
+    describe "current_execution" do
+      it "return the last execution of activity" do
+        activity = Activity.make!
+        execution_one = Execution.make!(activity: activity, percent: 10, date: Date.today - 2)
+        execution_two = Execution.make!(activity: activity, percent: 30, date: Date.today - 1)
+        execution_last = Execution.make!(activity: activity, percent: 70)
+        expect(activity.current_execution).to eq(execution_last)
+      end
+    end
+  end
+
   describe "Callbacks" do
     describe "set_finish_date" do
       it "should set finish date with execution_time and unit_execution_time" do

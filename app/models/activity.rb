@@ -22,6 +22,12 @@ class Activity < ActiveRecord::Base
   before_create :set_finish_date, :set_defaults
   after_create :create_first_execution
 
+  #### Instance Methods ####
+
+  def current_execution
+    executions.last
+  end
+
   def full_execution_time
     "#{execution_time} #{unit_execution_time}"
   end

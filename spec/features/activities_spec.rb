@@ -31,6 +31,7 @@ describe "Activities" do
       expect(page).to have_content(activity.init_date)
       expect(page).to have_content(activity.finish_date)
       expect(page).to have_content(activity.full_execution_time)
+      expect(page).to have_content("Porcentaje de Ejecucion: #{activity.current_execution.percent}%")
     end
   end
 
