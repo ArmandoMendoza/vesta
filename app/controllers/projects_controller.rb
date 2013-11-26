@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    @project.sub_contractor = current_user.company
     if @project.save
       redirect_to project_path(@project)
     else
@@ -23,6 +24,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    @project.sub_contractor = current_user.company
     if @project.update(params[:project])
       redirect_to project_path(@project)
     else

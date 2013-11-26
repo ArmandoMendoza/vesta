@@ -12,6 +12,12 @@
 <p>
 <%= @project.address %>
 </p>
+<p>
+<%= @project.contractor.name %>
+</p>
+<p>
+<%= @project.sub_contractor.name %>
+</p>
 
 <% if can? :read, Activity %>
   <td><%= link_to "Actividades", project_activities_path(@project) %></td>
