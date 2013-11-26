@@ -41,8 +41,9 @@
 </div>
 <div class="row">
 <% if @activity.followers.any? %>
+  Seguidores
   <ul>
-  <% @activity.followers.includes(:user) do |follower| %>
+  <% @activity.followers.includes(:user).each do |follower| %>
   <li><%= follower.user.full_name %></li>
   <% end %>
   </ul>
