@@ -6,5 +6,7 @@
   <%= f.input :unit_execution_time, collection: Activity::TRANSLATED_UNITS %>
   <%= f.input :parent_id, collection: Activity.all, label_method: :name, value_method: :id,
     label: "Depende de" %>
+  <%= f.input :user_ids, collection: @project.users, label_method: :full_name, value_method: :id,
+    label: "Seguidores" %>
   <%= f.submit class: "btn btn-success" %>
 <% end %>

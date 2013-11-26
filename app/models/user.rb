@@ -5,10 +5,13 @@ class User < ActiveRecord::Base
   USER_TYPE = { admin: "admin", owner: "owner", regular: "regular" }
 
   #### Relations ####
+  belongs_to :company, polymorphic: true
+
   has_many :collaborators
   has_many :followers
   has_many :projects, through: :collaborators
-  belongs_to :company, polymorphic: true
+  has_many :activities, through: :followers
+
 
   #### Validations ###
   validates_presence_of :first_name, :last_name, :user_type

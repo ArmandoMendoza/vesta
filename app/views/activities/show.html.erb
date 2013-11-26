@@ -39,3 +39,12 @@
     </p>
   </div>
 </div>
+<div class="row">
+<% if @activity.followers.any? %>
+  <ul>
+  <% @activity.followers.includes(:user) do |follower| %>
+  <li><%= follower.user.full_name %></li>
+  <% end %>
+  </ul>
+<% end %>
+</div>
