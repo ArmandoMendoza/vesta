@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131124180633) do
+ActiveRecord::Schema.define(version: 20131126172644) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(version: 20131124180633) do
   end
 
   add_index "executions", ["activity_id"], name: "index_executions_on_activity_id", using: :btree
+
+  create_table "followers", force: true do |t|
+    t.integer  "activity_id"
+    t.integer  "user_id"
+    t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "followers", ["activity_id"], name: "index_followers_on_activity_id", using: :btree
+  add_index "followers", ["user_id"], name: "index_followers_on_user_id", using: :btree
 
   create_table "images", force: true do |t|
     t.string   "description"

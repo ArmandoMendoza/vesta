@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   #### Relations ####
   has_many :collaborators
+  has_many :followers
   has_many :projects, through: :collaborators
   belongs_to :company, polymorphic: true
 

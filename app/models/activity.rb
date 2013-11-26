@@ -17,6 +17,7 @@ class Activity < ActiveRecord::Base
   #### Relations ####
   belongs_to :project
   has_many :executions
+  has_many :followers
 
   #### Validations ####
   validates_presence_of :name, :init_date, :execution_time, :unit_execution_time
