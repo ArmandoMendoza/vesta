@@ -55,11 +55,11 @@ describe "Collaborators" do
         end
         visit new_project_collaborator_path(@project)
         within('form#new_collaborator') do
-          select @other_user.full_name, from: "collaborator_user_id"
+          select "", from: "collaborator_user_id"
           select "Residente", from: "collaborator_collaborator_type"
           click_button "Crear Colaborador"
         end
-        expect(page).to have_content(I18n.t("errors.messages.taken"))
+        expect(page).to have_content(I18n.t("errors.messages.blank"))
       end
     end
   end
