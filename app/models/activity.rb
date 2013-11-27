@@ -1,4 +1,5 @@
 class Activity < ActiveRecord::Base
+  #### Extensions ####
   include ActsAsTree
   extend ActsAsTree::Presentation
   acts_as_tree order: "name"

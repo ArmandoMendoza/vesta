@@ -10,3 +10,6 @@
 
 #ignore zeus socket file
 .zeus.sock
+
+#ignore upload of carrierwave
+/public/uploads
