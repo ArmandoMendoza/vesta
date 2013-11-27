@@ -4,4 +4,12 @@ class Image < ActiveRecord::Base
 
   #### Relations ####
   belongs_to :imageable, polymorphic: true
+
+  #### Callbacks ####
+  before_save :set_description
+
+  private
+    def set_description
+      self.description = "imagen de actividad" if description.blank? || description.nil?
+    end
 end
