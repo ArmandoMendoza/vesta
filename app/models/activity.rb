@@ -29,6 +29,9 @@ class Activity < ActiveRecord::Base
   after_create :create_first_execution
 
   #### Instance Methods ####
+  def role_of(user)
+    followers.where(user_id: user.id).first.try(:role)
+  end
 
   def has_parent?
     parent.present?

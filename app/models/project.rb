@@ -19,6 +19,11 @@ class Project < ActiveRecord::Base
   before_validation :set_defaults
   before_create :set_state
 
+  #### Instance Methods ####
+  def role_of(user)
+    collaborators.where(user_id: user.id).first.try(:collaborator_type)
+  end
+
   private
     def set_defaults
       self.advance ||= 0

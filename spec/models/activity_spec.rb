@@ -22,6 +22,18 @@ describe Activity do
         expect(activity.current_execution).to eq(execution_last)
       end
     end
+
+    describe "#role_of" do
+      it "should return role of given user in the activity" do
+        no_follower = User.make!(:sub_contractor_regular)
+        user = User.make!(:sub_contractor_regular)
+        project = Project.make!(sub_contractor: user.company)
+        activity = Activity.make!(project: project)
+        Follower.make!(:sub_contractor_regular, user: user, activity: activity)
+        expect(activity.role_of(user)).to eq("Seguidor")
+        expect(activity.role_of(no_follower)).to be_nil
+      end
+    end
   end
 
   describe "Callbacks" do

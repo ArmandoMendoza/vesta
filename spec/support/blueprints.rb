@@ -125,3 +125,9 @@ Execution.blueprint do
   percent { 10 }
   activity { Activity.make! }
 end
+
+Follower.blueprint(:sub_contractor_regular) do
+  activity { Activity.make! }
+  user { User.make!(:sub_contractor_regular) }
+  role { "Seguidor" }
+end

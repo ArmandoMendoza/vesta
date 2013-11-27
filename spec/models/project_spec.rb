@@ -26,6 +26,19 @@ describe Project do
   it { should validate_numericality_of(:longitude) }
   it { should validate_numericality_of(:contractor_id) }
 
+  describe "Instance methods" do
+    describe "#role_of" do
+      it "should return rol of given user in the project" do
+        no_collaborator = User.make!(:sub_contractor_regular)
+        user = User.make!(:sub_contractor_regular)
+        project = Project.make!(sub_contractor: user.company)
+        Collaborator.make!(:sub_contractor_residente, user: user, project: project)
+        expect(project.role_of(user)).to eq("Residente")
+        expect(project.role_of(no_collaborator)).to be_nil
+      end
+    end
+  end
+
   describe "Custom validations" do
     it "should be invalid if init_date > finish_date" do
       project = Project.make(init_date: (Date.today + 10), finish_date: Date.today)
