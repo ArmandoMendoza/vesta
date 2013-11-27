@@ -23,14 +23,27 @@ describe "Activities" do
   end
 
   describe "User visit show" do
+    before do
+      @activity = Activity.make!(project: @project)
+      visit project_activity_path(@project, @activity)
+    end
+
     it "should have show all information of project" do
-      activity = Activity.make!(project: @project)
-      visit project_activity_path(@project, activity)
-      expect(page).to have_content(activity.name)
-      expect(page).to have_content(activity.description)
-      expect(page).to have_content(activity.init_date)
-      expect(page).to have_content(activity.finish_date)
-      expect(page).to have_content(activity.full_execution_time)
+      expect(page).to have_content(@activity.name)
+      expect(page).to have_content(@activity.description)
+      expect(page).to have_content(@activity.init_date)
+      expect(page).to have_content(@activity.finish_date)
+      expect(page).to have_content(@activity.full_execution_time)
+      expect(page).to have_content("#{@activity.current_execution.percent}%")
+    end
+
+    it "should have a link to show a form to create an execution to activity", js: true do
+      click_link "Actualizar"
+      expect(page).to have_content("Actualizar Ejecucion")
+      expect(page).to have_select("execution_percent")
+      select "50", from: "execution_percent"
+      click_button "Actualizar"
+      expect(page).to have_content("50%")
     end
   end
 

@@ -6,6 +6,10 @@ class ActivitiesController < ApplicationController
   def index
   end
 
+  def show
+    @execution = Execution.new
+  end
+
   def edit
   end
 

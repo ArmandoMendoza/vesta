@@ -1,14 +1,51 @@
 <h1>This is important Layout! WORK in it!</h1>
 <h2><%= @activity.name %></h2>
-<p>
-<%= @activity.description  %>
-</p>
-<p>
-<%= @activity.init_date  %>
-</p>
-<p>
-<%= @activity.finish_date  %>
-</p>
-<p>
-<%= @activity.full_execution_time %>
-</p>
+<div class="row">
+  <div class="col-md-2 current-percent">
+    <%= "#{@activity.current_execution.percent}%"  %>
+    <%= progress_bar_of_execution(@activity.current_execution.percent) %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+    <%= @activity.description  %>
+    </p>
+    <p>
+    <%= @activity.init_date  %>
+    </p>
+    <p>
+    <%= @activity.finish_date  %>
+    </p>
+    <p>
+    <%= @activity.full_execution_time %>
+    </p>
+    <p>
+    <%= @activity.state %>
+    </p>
+    <p>
+    <% if @activity.has_parent? %>
+      <p>Depende de: <%= @activity.parent.name %> </p>
+      <% if @activity.parent_finished? %>
+        <%= popover_to_execution_form(@execution, project_activity_execution_path(@project,
+            @activity, @execution)) %>
+      <% end %>
+    <% else %>
+      <% if @activity.executing? %>
+        <%= popover_to_execution_form(@execution, project_activity_execution_path(@project,
+            @activity, @execution)) %>
+        <% end %>
+    <% end %>
+    </p>
+  </div>
+</div>
+<div class="row">
+<% if @activity.followers.any? %>
+  Seguidores
+  <ul>
+  <% @activity.followers.includes(:user).each do |follower| %>
+  <li><%= follower.user.full_name %></li>
+  <% end %>
+  </ul>
+<% end %>
+</div>

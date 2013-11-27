@@ -12,6 +12,12 @@
 <p>
 <%= @project.address %>
 </p>
+<p>
+<%= @project.contractor.name %>
+</p>
+<p>
+<%= @project.sub_contractor.name %>
+</p>
 
 <% if can? :read, Activity %>
   <td><%= link_to "Actividades", project_activities_path(@project) %></td>
@@ -19,3 +25,22 @@
 <% if can? :read, Collaborator %>
   <td><%= link_to "colaboradores", project_collaborators_path(@project) %></td>
 <% end %>
+
+<div class="wrapper">
+  <div class="timeline-wrap">
+    <% Execution.order('date').distinct.pluck(:date).each do |date| %>
+    <div class="timeline-event">
+      <div class="timeline-title"><%= date.strftime('%d-%m-%Y') %></div>
+      <div class="timeline-content">
+        <ul>
+        <%Execution.where(date: date).includes(:activity).each do |e| %>
+         <li> Actividad <%= e.activity.name %> - <%= e.percent %>% <%= progress_bar_of_execution(e.percent) %> </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<%= javascript_include_tag "touch.timeline.js" %>

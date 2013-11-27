@@ -18,6 +18,7 @@ class Ability
 
     def owner_sub_contractor_abilities(user)
       can :read, [SubContractor, Contractor, User, Project, Collaborator, Activity]
+      can :create, Execution
       can :update, SubContractor, id: user.company.id
       can [:create, :update], User do |company_user|
         company_user.company == user.company
@@ -37,6 +38,7 @@ class Ability
 
     def owner_contractor_abilities(user)
       can :read, [SubContractor, Contractor, User, Project, Collaborator, Activity]
+      can :create, Execution
       can :update, Contractor, id: user.company.id
       can [:create, :update], User do |company_user|
         company_user.company == user.company

@@ -4,5 +4,9 @@
   <%= f.input :init_date %>
   <%= f.input :execution_time %>
   <%= f.input :unit_execution_time, collection: Activity::TRANSLATED_UNITS %>
+  <%= f.input :parent_id, collection: Activity.all, label_method: :name, value_method: :id,
+    label: "Depende de" %>
+  <%= f.association :users, collection: @project.users, label_method: :full_name, value_method: :id,
+    label: "Seguidores" %>
   <%= f.submit class: "btn btn-success" %>
 <% end %>

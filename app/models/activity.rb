@@ -1,4 +1,8 @@
 class Activity < ActiveRecord::Base
+  include ActsAsTree
+  extend ActsAsTree::Presentation
+  acts_as_tree order: "name"
+
   #### Constants ####
   STATE = { executing: "executing", stopped: "stopped", finished: "finished" }
   UNIT = { hours: "hours", days: "days", weeks: "weeks", months: "months", years: "years" }
@@ -12,6 +16,9 @@ class Activity < ActiveRecord::Base
 
   #### Relations ####
   belongs_to :project
+  has_many :executions
+  has_many :followers
+  has_many :users, through: :followers
 
   #### Validations ####
   validates_presence_of :name, :init_date, :execution_time, :unit_execution_time
@@ -19,12 +26,46 @@ class Activity < ActiveRecord::Base
 
   #### Callbacks ####
   before_create :set_finish_date, :set_defaults
+  after_create :create_first_execution
+
+  #### Instance Methods ####
+  def role_of(user)
+    followers.where(user_id: user.id).first.try(:role)
+  end
+
+  def has_parent?
+    parent.present?
+  end
+
+  def parent_finished?
+    parent.finished? if has_parent?
+  end
+
+  def executing?
+    state == STATE[:executing]
+  end
+
+  def stopped?
+    state == STATE[:stopped]
+  end
+
+  def finished?
+    state == STATE[:finished]
+  end
+
+  def current_execution
+    executions.last
+  end
 
   def full_execution_time
     "#{execution_time} #{unit_execution_time}"
   end
 
   private
+    def create_first_execution
+      executions << Execution.new(percent: 0)
+    end
+
     def set_finish_date
       self.finish_date ||= init_date + execution_time.send(unit_execution_time)
     end
