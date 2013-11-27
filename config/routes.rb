@@ -1,6 +1,5 @@
 Vesta::Application.routes.draw do
   root "home#index"
-
   devise_for :users
 
   resources :contractors do
@@ -14,6 +13,7 @@ Vesta::Application.routes.draw do
   resources :projects do
     resources :activities do
       resource :execution, only: :create
+      resources :images, except: :show, controller: 'activities/images'
     end
 
     resources :collaborators, except: :show
