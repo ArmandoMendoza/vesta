@@ -8,7 +8,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'turbolinks'
 gem 'simple_form'
 gem 'cancan'
-gem "acts_as_tree", '~> 1.4.0'
+gem 'acts_as_tree', '~> 1.4.0'
+gem 'carrierwave', '~> 0.9.0'
 
 # assets
 gem 'sass-rails', '~> 4.0.0'
