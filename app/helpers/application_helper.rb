@@ -30,6 +30,24 @@ module ApplicationHelper
     end
   end
 
+  def panel(title, button = false, *args)
+    options = args.extract_options!
+    content_header = raw(title)
+    if button
+      options[:button_options] ||= {}
+      content_header << content_tag(:div, table_link_to_new(options[:button_options]),
+        style: "float:right")
+    end
+    content_tag(:div, class: "panel panel-default") do
+      content_tag(:div, class: "panel-heading") do
+        content_header
+      end +
+      content_tag(:div, class: "panel-body") do
+        yield
+      end
+    end
+  end
+
   def table_link_to_new(options)
     options[:text] ||= "Nuevo"
     options[:url] ||= "#"

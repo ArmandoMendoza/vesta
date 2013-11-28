@@ -1,22 +1,16 @@
-<%= table_panel("Imagenes de #{@activity.name}", (can?(:create, Image)),
+<%= panel("Imagenes de #{@activity.name}", (can?(:create, Image)),
   button_options: { text: "Nuevo Imagen", url: [:new, @project, @activity, :image] }) do %>
-  <tr>
-    <th>Descripcion</th>
-    <th>Archivo</th>
-  </tr>
-  <% @images.each do |image| %>
-    <tr>
-      <td><%= image.description %></td>
-      <td><%= image.image_file.url %></td>
-      <td>
-        <%= image_tag(image.image_file.url) %>
-      </td>
-      <% if can? :edit, image %>
-        <td><%= link_to_edit "editar", [:edit, @project, @activity, image] %></td>
-      <% end %>
-      <% if can? :destroy, image %>
-        <td><%= link_to "destroy", [@project, @activity, image], method: :delete %></td>
-      <% end %>
-    </tr>
-  <% end %>
+  <div class="add-image">
+    <%= form_for [@project, @activity, Image.new], html: { multipart: true,
+          id: 'form-add-image' } do |f| %>
+      <%= f.file_field :image_file, multiple: true, name: "image[image_file]" %>
+    <% end %>
+  </div>
+  <div class="gallery">
+    <% @images.each do |image| %>
+      <%= render partial: "shared/thumbnail", locals: { image: image,
+        url_to_edit_image: [:edit, @project, @activity, image],
+        url_to_delete_image: [@project, @activity, image] } %>
+    <% end %>
+  </div>
 <% end %>

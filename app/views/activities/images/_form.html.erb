@@ -1,4 +1,5 @@
 <%= simple_form_for [@project, @activity, @image] do |f| %>
+  <%= f.input :description %>
   <%= f.input :image_file, input_html: { multiple: true, name: "image[image_file]" } %>
   <%= f.submit class: "btn btn-success" %>
 <% end %>
