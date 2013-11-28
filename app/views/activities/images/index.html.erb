@@ -14,7 +14,9 @@
       <% if can? :edit, image %>
         <td><%= link_to_edit "editar", [:edit, @project, @activity, image] %></td>
       <% end %>
+      <% if can? :destroy, image %>
+        <td><%= link_to "destroy", [@project, @activity, image], method: :delete %></td>
+      <% end %>
     </tr>
   <% end %>
 <% end %>
-

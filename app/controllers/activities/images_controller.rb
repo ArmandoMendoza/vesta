@@ -14,10 +14,14 @@ class Activities::ImagesController < ApplicationController
   end
 
   def create
-    if @activity.images << @image
-      redirect_to [@project, @activity, :images]
-    else
-      render :new
+    respond_to do |format|
+      if @activity.images << @image
+        format.html { redirect_to [@project, @activity, :images] }
+        format.js
+      else
+        format.html { render :new }
+        format.js
+      end
     end
   end
 
@@ -27,6 +31,11 @@ class Activities::ImagesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @image.destroy
+    redirect_to [@project, @activity, :images]
   end
 
   private
