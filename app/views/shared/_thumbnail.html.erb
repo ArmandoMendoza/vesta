@@ -1,0 +1,15 @@
+<div class="col-sm-6 col-md-3">
+  <div class="thumbnail" style="margin-top: 10px; margin-bottom: 1opx">
+    <%= image_tag(image.image_file.index_thumb.url) %>
+    <div class="caption"><%= image.description %></div>
+    <div style="text-align: center">
+      <%= link_to "Descargar", image.image_file.url, target: '_blank' %>
+      <% if can? :edit, image %>
+       | <%= link_to "Editar", url_to_edit_image %>
+      <% end %>
+      <% if can? :destroy, image %>
+       | <%= link_to "Eliminar", url_to_delete_image, method: :delete %>
+      <% end %>
+    </div>
+  </div>
+</div>

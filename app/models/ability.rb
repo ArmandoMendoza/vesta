@@ -17,6 +17,7 @@ class Ability
     end
 
     def owner_sub_contractor_abilities(user)
+      can :manage, Image
       can :read, [SubContractor, Contractor, User, Project, Collaborator, Activity]
       can :create, Execution
       can :update, SubContractor, id: user.company.id

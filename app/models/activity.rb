@@ -1,4 +1,5 @@
 class Activity < ActiveRecord::Base
+  #### Extensions ####
   include ActsAsTree
   extend ActsAsTree::Presentation
   acts_as_tree order: "name"
@@ -19,6 +20,7 @@ class Activity < ActiveRecord::Base
   has_many :executions
   has_many :followers
   has_many :users, through: :followers
+  has_many :images, as: :imageable
 
   #### Validations ####
   validates_presence_of :name, :init_date, :execution_time, :unit_execution_time

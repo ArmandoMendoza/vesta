@@ -8,7 +8,9 @@ gem 'jbuilder', '~> 1.2'
 gem 'turbolinks'
 gem 'simple_form'
 gem 'cancan'
-gem "acts_as_tree", '~> 1.4.0'
+gem 'acts_as_tree', '~> 1.4.0'
+gem 'carrierwave', '~> 0.9.0'
+gem 'mini_magick'
 
 # assets
 gem 'sass-rails', '~> 4.0.0'
@@ -18,6 +20,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
 gem 'compass-rails', '~> 2.0.alpha.0'
 gem 'jquery-turbolinks'
+gem 'jquery-fileupload-rails'
 
 group :doc do
   gem 'sdoc', require: false

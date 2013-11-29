@@ -1,0 +1,30 @@
+<%= panel("Imagenes de #{@activity.name}", (can?(:create, Image)),
+  button_options: { text: "Nuevo Imagen", url: [:new, @project, @activity, :image] }) do %>
+  <div class="add-image">
+    <%= form_for [@project, @activity, Image.new], html: { multipart: true,
+          id: 'form-add-image' } do |f| %>
+      <%= f.file_field :image_file, multiple: true, name: "image[image_file]" %>
+    <% end %>
+  </div>
+  <br>
+  <div class="uploader">
+  </div>
+  <div class="gallery">
+    <% @images.each do |image| %>
+      <%= render partial: "shared/thumbnail", locals: { image: image,
+        url_to_edit_image: [:edit, @project, @activity, image],
+        url_to_delete_image: [@project, @activity, image] } %>
+    <% end %>
+  </div>
+<% end %>
+
+<script id="template-upload" type="text/x-tmpl">
+  <div class="upload">
+    {%=o.name%}
+    <div class="progress"><div class="progress-bar" style="width: 0%"></div></div>
+  </div>
+</script>
+
+<script id="template-error" type="text/x-tmpl">
+  <div class="alert alert-danger">Error en formato de archivo {%=o.name%}</div>
+</script>
