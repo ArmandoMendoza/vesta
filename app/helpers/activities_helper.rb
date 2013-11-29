@@ -11,8 +11,7 @@ module ActivitiesHelper
       content: content.gsub("\n", ""), title: "", "original-title" => title })
   end
 
-  def progress_bar_of_execution(activity)
-    percent = activity.current_execution.percent
+  def progress_bar_of_execution(percent)
     content_tag(:div, class: "progress") do
       content_tag(:div, class: "progress-bar", role: "progressbar", "aria-valuemin" => 0,
       "aria-valuemax" => 100, "aria-valuenow" => percent, style: "width: #{percent}%") do

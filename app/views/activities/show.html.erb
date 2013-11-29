@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-md-2 current-percent">
     <%= "#{@activity.current_execution.percent}%"  %>
-    <%= progress_bar_of_execution(@activity) %>
+    <%= progress_bar_of_execution(@activity.current_execution.percent) %>
   </div>
 </div>
 <div class="row">

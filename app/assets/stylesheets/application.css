@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require global
+ *= require touch.timeline.light
  *= require_tree .
  */
