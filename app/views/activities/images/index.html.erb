@@ -6,6 +6,9 @@
       <%= f.file_field :image_file, multiple: true, name: "image[image_file]" %>
     <% end %>
   </div>
+  <br>
+  <div class="uploader">
+  </div>
   <div class="gallery">
     <% @images.each do |image| %>
       <%= render partial: "shared/thumbnail", locals: { image: image,
@@ -14,3 +17,14 @@
     <% end %>
   </div>
 <% end %>
+
+<script id="template-upload" type="text/x-tmpl">
+  <div class="upload">
+    {%=o.name%}
+    <div class="progress"><div class="progress-bar" style="width: 0%"></div></div>
+  </div>
+</script>
+
+<script id="template-error" type="text/x-tmpl">
+  <div class="alert alert-danger">Error en formato de archivo {%=o.name%}</div>
+</script>

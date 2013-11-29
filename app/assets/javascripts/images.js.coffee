@@ -1,16 +1,18 @@
 jQuery ->
-  $('#new_image_i').fileupload
+  $('#form-add-image').fileupload
     dataType: 'script'
     add: (e, data) ->
       types = /(\.|\/)(gif|jpe?g|png)$/i
       file = data.files[0]
       if types.test(file.type) || types.test(file.name)
-        data.context = $('<p/>').text('Uploading...').appendTo(document.body)
+        data.context = $(tmpl("template-upload", file))
+        $('.uploader').append(data.context)
         data.submit()
       else
-        $('<p/>').text("Error en formato de archivo #{file.name}").appendTo(document.body)
-    done: (e, data) ->
-      data.context.text('Upload finished.')
-    progressall: (e, data)->
+        data.context = $(tmpl("template-error", file))
+        $('.uploader').append(data.context)
+    progress: (e, data)->
       progress = parseInt(data.loaded / data.total * 100, 10)
-      $('.progress-bar').css('width', progress + '%')
+      data.context.find('.progress-bar').css('width', progress + '%')
+    done: (e, data)->
+      data.context.remove()

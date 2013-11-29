@@ -1,1 +1,8 @@
-console.log("done!");
+<% if @image.errors.any? %>
+  alert("Error subiendo imagen: <%= j @image.errors.full_messages.join(',') %>");
+<% else %>
+  $('.gallery').append("<%= j render(partial: 'shared/thumbnail',
+    locals: { image: @image,
+    url_to_edit_image: [:edit, @project, @activity, @image],
+    url_to_delete_image: [@project, @activity, @image] }) %>");
+<% end %>
