@@ -131,3 +131,9 @@ Follower.blueprint(:sub_contractor_regular) do
   user { User.make!(:sub_contractor_regular) }
   role { "Seguidor" }
 end
+
+Image.blueprint(:activity) do
+  description { "An Image" }
+  image_file { File.open("#{Rails.root}/spec/fixtures/image.jpg") }
+  imageable { Activity.make! }
+end
