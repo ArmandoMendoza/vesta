@@ -9,11 +9,32 @@ body {
   line-height: 1.3em;
   padding-top: 50px;
 }
+
 .breadcrumb {
-  color: white;
+  color: #FFFFFF;
 }
-.main-container {
-  background-color: white;
+
+.header-container {
+  color: #FFFFFF;
+  background-color: #47474A;
+  font-size: 2.18em;
+  font-weight: 600;
+  line-height: 2em;
+  padding-left: 2%;
+  // text-transform: uppercase;
+}
+
+.body-container {
+  padding: 30px 60px;
+  background-color: #E5E5E5;
+}
+
+.footer-container {
+  color: #FFFFFF;
+  text-align: center;
+  height: 50px;
+  background-color: #47474A;
+  padding: 10px;
 }
 
 @mixin action-icon($sprite) {
@@ -56,4 +77,14 @@ body {
   @include main-menu-icon("new-company");
   @include main-menu-icon("new-institution");
   @include main-menu-icon("new-project");
+}
+//Forms
+.btn-form {
+  margin: 5px;
+}
+
+// Panel
+.text-title-panel {
+  font-weight: 700;
+  text-transform: uppercase;
 }

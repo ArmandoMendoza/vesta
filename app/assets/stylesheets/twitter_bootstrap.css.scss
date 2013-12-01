@@ -1,5 +1,7 @@
 // $navbar-height: 60px;
-$breadcrumb-bg: #47474A;
+// $breadcrumb-bg: #47474A;
+$panel-default-heading-bg: #EDAB35;
+$panel-default-text: #47474A;
 
 @import "bootstrap";
 // Overwrite the rule table of Twiter Bootstrap
@@ -10,4 +12,74 @@ $breadcrumb-bg: #47474A;
 .table tfoot > tr > th,
 .table tfoot > tr > td {
     vertical-align: middle;
+    text-align: center;
+    color: #AF2D27;
 }
+
+// Custom Button Vesta
+.btn-vesta {
+  background-color: #EDAB35;
+  border-color: #EDAB35;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+.btn-vesta:hover,
+.btn-vesta:focus,
+.btn-vesta:active,
+.btn-vesta.active {
+  background-color: #eba11e;
+  border-color: #db9414;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+.btn-vesta.disabled:hover,
+.btn-vesta.disabled:focus,
+.btn-vesta.disabled:active,
+.btn-vesta.disabled.active,
+.btn-vesta[disabled]:hover,
+.btn-vesta[disabled]:focus,
+.btn-vesta[disabled]:active,
+.btn-vesta[disabled].active,
+fieldset[disabled] .btn-vesta:hover,
+fieldset[disabled] .btn-vesta:focus,
+fieldset[disabled] .btn-vesta:active,
+fieldset[disabled] .btn-vesta.active {
+  background-color: #EDAB35;
+  border-color: #EDAB35;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.btn-dark {
+  background-color: #47474A;
+  border-color: #47474A;
+  color: #EDAB35;
+  font-weight: bolder;
+}
+.btn-dark:hover,
+.btn-dark:focus,
+.btn-dark:active,
+.btn-dark.active {
+  background-color: #3b3b3d;
+  border-color: #2e2e30;
+  color: #EDAB35;
+  font-weight: bolder;
+}
+.btn-dark.disabled:hover,
+.btn-dark.disabled:focus,
+.btn-dark.disabled:active,
+.btn-dark.disabled.active,
+.btn-dark[disabled]:hover,
+.btn-dark[disabled]:focus,
+.btn-dark[disabled]:active,
+.btn-dark[disabled].active,
+fieldset[disabled] .btn-dark:hover,
+fieldset[disabled] .btn-dark:focus,
+fieldset[disabled] .btn-dark:active,
+fieldset[disabled] .btn-dark.active {
+  background-color: #47474A;
+  border-color: #47474A;
+  color: #EDAB35;
+  font-weight: bolder;
+}
+

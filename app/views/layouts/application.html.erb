@@ -7,26 +7,21 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <!-- MENU -->
+    <%= render 'shared/menu_bar' %>
     <!-- CONTENT -->
-
-    <%= render "shared/menu_bar" %>
-    <ol class="breadcrumb">
-      DASHBOARD
-    </ol>
-
-    <div class="container main-container">
-      <!-- MENU -->
-      <% if user_signed_in? %>
-        <%= current_user.user_type %>
-        <%= current_user.company.name %>
-        <%= current_user.company_type %>
-      <% end %>
-      <div class="row">
-        <div class="col-md-12">
-          <%= yield %>
+    <div class="container">
+      <div class="header-container">PROYECTOS otra cosa</div>
+      <div class="body-container">
+        <div class="row">
+          <div class="col-md-12">
+            <%= yield %>
+          </div>
         </div>
       </div>
+      <div class="footer-container">
+      ©Copyright 2013 TAMPACO C.A. Todos los derechos reservados
+      </div>
     </div>
-
   </body>
 </html>

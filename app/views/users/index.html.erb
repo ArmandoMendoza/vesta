@@ -1,25 +1,30 @@
 <%= table_panel("USUARIOS DE #{@company.name}", (can?(:create, User)),
   button_options: { text: "Nuevo Usuario", url: [:new, @company, :user] }) do %>
-  <tr>
-    <th>Nombre</th>
-    <th>Apellido</th>
-    <th>Email</th>
-    <th>Telefono</th>
-    <th>Tipo de Usuario</th>
-  </tr>
-  <% @users.each do |user| %>
+  <thead>
     <tr>
-      <td><%= user.first_name %></td>
-      <td><%= user.last_name %></td>
-      <td><%= user.email %></td>
-      <td><%= user.phone %></td>
-      <td><%= user.user_type %></td>
-      <% if can? :read, user %>
-        <td><%= link_to_show "detalles", [@company, user] %></td>
-      <% end %>
-      <% if can? :edit, user %>
-        <td><%= link_to_edit "editar", [:edit, @company, user] %></td>
-      <% end %>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Email</th>
+      <th>Telefono</th>
+      <th>Tipo de Usuario</th>
+      <th colspan="2">Acciones</th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.user_type %></td>
+        <% if can? :read, user %>
+          <td><%= link_to_show "detalles", [@company, user] %></td>
+        <% end %>
+        <% if can? :edit, user %>
+          <td><%= link_to_edit "editar", [:edit, @company, user] %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
 <% end %>

@@ -13,8 +13,8 @@ module ApplicationHelper
 
   def table_panel(title, button = false, *args)
     options = args.extract_options!
-    options[:table_class] ||= "table table-condensed"
-    content_header = raw(title)
+    options[:table_class] ||= "table table-condensed table-hover"
+    content_header = content_tag(:span, title, class: "text-title-panel")
     if button
       options[:button_options] ||= {}
       content_header << content_tag(:div, table_link_to_new(options[:button_options]),
@@ -32,7 +32,7 @@ module ApplicationHelper
 
   def panel(title, button = false, *args)
     options = args.extract_options!
-    content_header = raw(title)
+    content_header = content_tag(:span, title, class: "text-title-panel")
     if button
       options[:button_options] ||= {}
       content_header << content_tag(:div, table_link_to_new(options[:button_options]),
@@ -51,8 +51,10 @@ module ApplicationHelper
   def table_link_to_new(options)
     options[:text] ||= "Nuevo"
     options[:url] ||= "#"
-    options[:class] ||= "btn btn-success btn-xs"
-    link_to options[:text], options[:url], class: options[:class]
+    options[:class] ||= "btn btn-dark btn-xs"
+    link_to options[:url], class: options[:class] do
+      content_tag(:span, nil, class: 'glyphicon glyphicon-plus') + " " + options[:text]
+    end
   end
 
   def link_to_edit(text, *args)
@@ -69,6 +71,14 @@ module ApplicationHelper
     link_to(*process_args) do
       "#{text}"
     end
+  end
+
+  def button_form_to_back(text, url = :back )
+    link_to text, url, class: 'btn btn-vesta btn-form col-md-5'
+  end
+
+  def submit_button(text = "Guardar")
+    content_tag(:input, nil, type: "submit", value: text, class: "btn btn-vesta btn-form col-md-6")
   end
 
   private

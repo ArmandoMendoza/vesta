@@ -1,13 +1,17 @@
 <%= table_panel("PROYECTOS", (can?(:create, Project)),
   button_options: { text: "Nuevo Proyecto", url: new_project_path }) do %>
-  <tr>
-    <th>Estatus</th>
-    <th>Nombre</th>
-    <th>Nro Contrato</th>
-    <th>Presupuesto</th>
-    <th>Inicio</th>
-    <th>Termino</th>
-  </tr>
+  <thead>
+    <tr>
+      <th>Estatus</th>
+      <th>Nombre</th>
+      <th>Nro Contrato</th>
+      <th>Presupuesto</th>
+      <th>Inicio</th>
+      <th>Termino</th>
+      <th colspan="4">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
   <% @projects.each do |project| %>
     <tr>
       <td><%= project.state %></td>
@@ -30,4 +34,5 @@
       <% end %>
     </tr>
   <% end %>
+  </tbody>
 <% end %>

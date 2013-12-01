@@ -1,13 +1,17 @@
 <%= table_panel("ACTIVIDADES DE #{@project.name}", (can?(:create, Activity)),
-  button_options: { text: "Nueva Actividad", url: new_project_activity_path }) do %>
-  <tr>
-    <th>Nombre</th>
-    <th>Descripcion</th>
-    <th>Fecha Inicio</th>
-    <th>Fecha Final</th>
-    <th>Tiempo de Ejecucion</th>
-    <th>Estatus</th>
-  </tr>
+  button_options: { text: "Nueva Activadad", url: new_project_activity_path }) do %>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Fecha Inicio</th>
+      <th>Fecha Final</th>
+      <th>Tiempo de Ejecucion</th>
+      <th>Estatus</th>
+      <th colspan="2">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
   <% @activities.each do |activity| %>
     <tr>
       <td><%= activity.name %></td>
@@ -24,4 +28,5 @@
       <% end %>
     </tr>
   <% end %>
+  </tbody>
 <% end %>

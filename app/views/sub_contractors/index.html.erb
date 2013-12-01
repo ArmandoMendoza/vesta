@@ -1,12 +1,16 @@
 <%= table_panel("LISTADO DE CONTRATISTAS", (can?(:create, SubContractor)),
   button_options: { text: "Nuevo Contratista", url: new_sub_contractor_path }) do %>
-  <tr>
-    <th>Nombre</th>
-    <th>Rif</th>
-    <th>Direccion</th>
-    <th>Telefono</th>
-    <th>Email</th>
-  </tr>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Rif</th>
+      <th>Direccion</th>
+      <th>Telefono</th>
+      <th>Email</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
   <% @sub_contractors.each do |sub_contractor| %>
     <tr>
       <td><%= sub_contractor.name %></td>
@@ -25,4 +29,5 @@
       <% end %>
     </tr>
   <% end %>
+  </tbody>
 <% end %>

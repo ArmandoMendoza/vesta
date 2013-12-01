@@ -8,5 +8,6 @@
   <% if current_user.admin? %>
     <%= f.input :user_type, collection: User::USER_TYPE %>
   <% end %>
-  <%= f.submit class: "btn btn-success" %>
+  <%= submit_button %>
+  <%= button_form_to_back "Volver", [@company, :users] %>
 <% end %>

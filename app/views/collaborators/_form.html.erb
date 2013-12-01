@@ -1,5 +1,6 @@
 <%= simple_form_for [@project, @collaborator] do |f| %>
   <%= f.input :user_id, collection: @users, label_method: :full_name, value_method: :id %>
   <%= f.input :collaborator_type, collection: @collaboration_types %>
-  <%= f.submit class: "btn btn-success" %>
+  <%= submit_button %>
+  <%= button_form_to_back "Volver", [@project, :collaborators] %>
 <% end %>

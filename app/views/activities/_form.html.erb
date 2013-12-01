@@ -8,5 +8,6 @@
     label: "Depende de" %>
   <%= f.association :users, collection: @project.users, label_method: :full_name, value_method: :id,
     label: "Seguidores" %>
-  <%= f.submit class: "btn btn-success" %>
+  <%= submit_button %>
+  <%= button_form_to_back "Volver", [@project, :activities] %>
 <% end %>
