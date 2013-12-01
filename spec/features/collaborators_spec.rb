@@ -38,7 +38,7 @@ describe "Collaborators" do
         within('form#new_collaborator') do
           select @user.full_name, from: "collaborator_user_id"
           select "Residente", from: "collaborator_collaborator_type"
-          click_button "Crear Colaborador"
+          click_button "Guardar"
         end
         expect(page).to have_content(@user.full_name)
         expect(page).to have_content("Residente")
@@ -51,13 +51,13 @@ describe "Collaborators" do
         within('form#new_collaborator') do
           select @user.full_name, from: "collaborator_user_id"
           select "Residente", from: "collaborator_collaborator_type"
-          click_button "Crear Colaborador"
+          click_button "Guardar"
         end
         visit new_project_collaborator_path(@project)
         within('form#new_collaborator') do
           select "", from: "collaborator_user_id"
           select "Residente", from: "collaborator_collaborator_type"
-          click_button "Crear Colaborador"
+          click_button "Guardar"
         end
         expect(page).to have_content(I18n.t("errors.messages.blank"))
       end
@@ -73,7 +73,7 @@ describe "Collaborators" do
       visit edit_project_collaborator_path(@project, collaborator)
       within('form') do
         select other_user.full_name, from: "collaborator_user_id"
-        click_button "Actualizar Colaborador"
+        click_button "Guardar"
       end
       expect(page).to have_content(other_user.full_name)
     end

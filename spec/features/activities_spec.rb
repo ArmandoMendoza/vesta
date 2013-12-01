@@ -60,7 +60,7 @@ describe "Activities" do
           select "2013", from: :activity_init_date_1i
           fill_in :activity_execution_time, with: "10"
           select "Dias", from: :activity_unit_execution_time
-          click_button "Crear Actividad"
+          click_button "Guardar"
         end
         expect(page).to have_content("Actividad de Pruebas")
         expect(page).to have_content("Nada de importancia")
@@ -78,7 +78,7 @@ describe "Activities" do
           fill_in :activity_description, with: "Nada de importancia"
           fill_in :activity_execution_time, with: "AA"
           select "Dias", from: :activity_unit_execution_time
-          click_button "Crear Actividad"
+          click_button "Guardar"
         end
         expect(page).to have_content(I18n.t("errors.messages.blank"))
         expect(page).to have_content(I18n.t("errors.messages.not_a_number"))
@@ -92,7 +92,7 @@ describe "Activities" do
       visit edit_project_activity_path(@project, activity)
       within('form') do
         fill_in :activity_name, with: "Actividad Editada"
-        click_button "Actualizar Actividad"
+        click_button "Guardar"
       end
       expect(page).to have_content("Actividad Editada")
     end

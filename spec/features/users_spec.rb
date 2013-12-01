@@ -57,7 +57,7 @@ describe "Users" do
             fill_in :user_password, with: "superpass"
             fill_in :user_password_confirmation, with: "superpass"
             select "admin", from: :user_user_type
-            click_button "Crear Usuario"
+            click_button "Guardar"
           end
           expect(page).to have_content("Armando")
           expect(page).to have_content("Mendoza")
@@ -82,7 +82,7 @@ describe "Users" do
             fill_in :user_email, with: "coopnova@hotmail.com"
             fill_in :user_password, with: "superpass"
             fill_in :user_password_confirmation, with: "superpass"
-            click_button "Crear Usuario"
+            click_button "Guardar"
           end
           expect(page).to have_content("Armando")
           expect(page).to have_content("Mendoza")
@@ -106,7 +106,7 @@ describe "Users" do
           fill_in :user_email, with: ""
           fill_in :user_password, with: "superpass"
           fill_in :user_password_confirmation, with: ""
-          click_button "Crear Usuario"
+          click_button "Guardar"
         end
         expect(page).to have_content(I18n.t("errors.messages.confirmation"))
         expect(page).to have_content(I18n.t("errors.messages.blank"))
@@ -122,7 +122,7 @@ describe "Users" do
       visit edit_contractor_user_path(contractor, owner)
       within('form') do
         fill_in :user_first_name, with: "Lucia"
-        click_button "Actualizar Usuario"
+        click_button "Guardar"
       end
       expect(page).to have_content("Lucia")
     end

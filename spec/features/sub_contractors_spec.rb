@@ -42,7 +42,7 @@ describe "SubContractors" do
           fill_in :sub_contractor_address, with: "San Cristobal"
           fill_in :sub_contractor_phone, with: "276-3535340"
           fill_in :sub_contractor_email, with: "coopnova@hotmail.com"
-          click_button "Crear Contratista"
+          click_button "Guardar"
         end
         expect(page).to have_content("Contratista Cooperativa Nova")
         expect(page).to have_content("J-31446097-8")
@@ -61,7 +61,7 @@ describe "SubContractors" do
           fill_in :sub_contractor_address, with: ""
           fill_in :sub_contractor_phone, with: "02763535340"
           fill_in :sub_contractor_email, with: ""
-          click_button "Crear Contratista"
+          click_button "Guardar"
         end
         expect(page).to have_content(I18n.t("errors.messages.invalid"))
         expect(page).to have_content(I18n.t("errors.messages.blank"))
@@ -75,7 +75,7 @@ describe "SubContractors" do
       visit edit_sub_contractor_path(sub_contractor)
       within('form') do
         fill_in :sub_contractor_name, with: "Cooperativa Nova"
-        click_button "Actualizar Contratista"
+        click_button "Guardar"
       end
       expect(page).to have_content("Contratista Cooperativa Nova")
     end
