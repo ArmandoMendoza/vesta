@@ -1,0 +1,11 @@
+.chosen-container .chosen-results li.highlighted {
+  background-color: #AF2D27;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #AF2D27), color-stop(90%, #AF2D27));
+  background-image: -webkit-linear-gradient(#AF2D27 20%, #AF2D27 90%);
+  background-image: -moz-linear-gradient(#AF2D27 20%, #AF2D27 90%);
+  background-image: -o-linear-gradient(#AF2D27 20%, #AF2D27 90%);
+  background-image: linear-gradient(#AF2D27 20%, #AF2D27 90%);
+  color: #fff;
+}
+.chosen-container-single { .chosen-single { height: auto } }
+.chosen-container-multi .chosen-choices { height: 30px !important; }

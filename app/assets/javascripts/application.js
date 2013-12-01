@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
+//= require chosen.jquery.min
 //= require_tree .

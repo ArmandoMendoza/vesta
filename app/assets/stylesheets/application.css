@@ -11,5 +11,6 @@
  *= require_self
  *= require global
  *= require touch.timeline.light
+ *= require chosen.min.css
  *= require_tree .
  */

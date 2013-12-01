@@ -5,9 +5,10 @@
   <%= f.input :execution_time %>
   <%= f.input :unit_execution_time, collection: Activity::TRANSLATED_UNITS %>
   <%= f.input :parent_id, collection: Activity.all, label_method: :name, value_method: :id,
-    label: "Depende de" %>
+    label: "Depende de", input_html: { class: "chosen",
+    data: { placeholder: "Seleccione Actividad" } }%>
   <%= f.association :users, collection: @project.users, label_method: :full_name, value_method: :id,
-    label: "Seguidores" %>
+    label: "Seguidores", input_html: {class: "chosen", data: { placeholder: "Seleccione Usuarios" } } %>
   <%= submit_button %>
   <%= button_form_to_back "Volver", [@project, :activities] %>
 <% end %>

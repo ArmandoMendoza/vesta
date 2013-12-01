@@ -5,7 +5,8 @@
   <%= f.input :finish_date %>
   <%= f.input :budget %>
   <%= f.input :advance %>
-  <%= f.association :contractor %>
+  <%= f.association :contractor, input_html: { class: "chosen", data:
+    { placeholder: "Seleccione Contratante" } } %>
   <%= f.input :address %>
   <%= f.input :address_city %>
   <%= f.input :address_municipality %>

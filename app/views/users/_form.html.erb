@@ -6,7 +6,8 @@
   <%= f.input :password, required: true %>
   <%= f.input :password_confirmation, required: true %>
   <% if current_user.admin? %>
-    <%= f.input :user_type, collection: User::USER_TYPE %>
+    <%= f.input :user_type, collection: User::USER_TYPE, input_html: { class: "chosen",
+      data: { placeholder: "Seleccione Tipo de Usuario"} }%>
   <% end %>
   <%= submit_button %>
   <%= button_form_to_back "Volver", [@company, :users] %>
