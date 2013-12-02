@@ -16,4 +16,5 @@
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 //= require chosen.jquery.min
+//= require zebra_datepicker
 //= require_tree .

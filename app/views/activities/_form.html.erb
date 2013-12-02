@@ -1,9 +1,10 @@
 <%= simple_form_for [@project, @activity] do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :init_date %>
+  <%= f.input :init_date, as: :string, input_html: { class: "datepicker"}  %>
   <%= f.input :execution_time %>
-  <%= f.input :unit_execution_time, collection: Activity::TRANSLATED_UNITS %>
+  <%= f.input :unit_execution_time, collection: Activity::TRANSLATED_UNITS,
+  input_html: { class: "chosen", data: { placeholder: "Unidad de tiempo" } } %>
   <%= f.input :parent_id, collection: Activity.all, label_method: :name, value_method: :id,
     label: "Depende de", input_html: { class: "chosen",
     data: { placeholder: "Seleccione Actividad" } }%>

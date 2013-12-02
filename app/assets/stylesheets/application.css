@@ -11,6 +11,7 @@
  *= require_self
  *= require global
  *= require touch.timeline.light
- *= require chosen.min.css
+ *= require chosen.min
+ *= require zebra_datepicker
  *= require_tree .
  */

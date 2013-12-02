@@ -78,7 +78,7 @@ module ApplicationHelper
   end
 
   def submit_button(text = "Guardar")
-    content_tag(:input, nil, type: "submit", value: text, class: "btn btn-vesta btn-form col-md-6")
+    content_tag(:button, text, type: "submit", value: text, class: "btn btn-vesta btn-form col-md-6")
   end
 
   private

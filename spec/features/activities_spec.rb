@@ -55,9 +55,7 @@ describe "Activities" do
         within('form') do
           fill_in :activity_name, with: "Actividad de Pruebas"
           fill_in :activity_description, with: "Nada de importancia"
-          select "1", from: :activity_init_date_3i
-          select "enero", from: :activity_init_date_2i
-          select "2013", from: :activity_init_date_1i
+          fill_in :activity_init_date, with: "01-01-2013"
           fill_in :activity_execution_time, with: "10"
           select "Dias", from: :activity_unit_execution_time
           click_button "Guardar"
