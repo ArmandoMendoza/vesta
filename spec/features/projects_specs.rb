@@ -53,19 +53,15 @@ describe "Projects" do
           fill_in :project_latitude, with: "0"
           fill_in :project_longitude, with: "0"
           select @contractor.name, from: :project_contractor_id
-          select "1", from: :project_init_date_3i
-          select "enero", from: :project_init_date_2i
-          select "2013", from: :project_init_date_1i
-          select "1", from: :project_finish_date_3i
-          select "enero", from: :project_finish_date_2i
-          select "2014", from: :project_finish_date_1i
+          fill_in :project_init_date, with: "2013-01-01"
+          fill_in :project_finish_date, with: "2014-01-01"
           click_button "Crear Proyecto"
         end
         expect(page).to have_content("Proyecto de Pruebas")
         expect(page).to have_content("1000000.0")
         expect(page).to have_content("Av Ppl de Pueblo Nuevo")
         expect(page).to have_content("2013-01-01")
-        expect(page).to have_content("2013-01-01")
+        expect(page).to have_content("2014-01-01")
         expect(page).to have_content(@contractor.name)
         expect(page).to have_content(@sub_contractor.name)
       end
@@ -86,12 +82,8 @@ describe "Projects" do
           fill_in :project_latitude, with: "0"
           fill_in :project_longitude, with: "0"
           select @contractor.name, from: :project_contractor_id
-          select "1", from: :project_init_date_3i
-          select "enero", from: :project_init_date_2i
-          select "2013", from: :project_init_date_1i
-          select "1", from: :project_finish_date_3i
-          select "enero", from: :project_finish_date_2i
-          select "2014", from: :project_finish_date_1i
+          fill_in :project_init_date, with: "2013-01-01"
+          fill_in :project_finish_date, with: "2014-01-01"
           click_button "Crear Proyecto"
         end
         expect(page).to have_content(I18n.t("errors.messages.blank"))

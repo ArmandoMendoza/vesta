@@ -1,8 +1,8 @@
 <%= simple_form_for @project do |f| %>
   <%= f.input :name %>
   <%= f.input :contract_number %>
-  <%= f.input :init_date %>
-  <%= f.input :finish_date %>
+  <%= f.input :init_date, as: :string, input_html: { class: "datepicker"} %>
+  <%= f.input :finish_date, as: :string, input_html: { class: "datepicker"} %>
   <%= f.input :budget %>
   <%= f.input :advance %>
   <%= f.association :contractor, input_html: { class: "chosen", data:
