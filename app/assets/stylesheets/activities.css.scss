@@ -8,3 +8,46 @@
   -moz-border-radius: 3px 3px 3px 3px;
   -webkit-border-radius: 3px 3px 3px 3px;
 }
+
+.add-task {
+  border: 1px solid #DDDDDD;
+  display: table-cell;
+  // padding: 6px 10px;
+  height: 32px;
+  width: 100%;
+}
+.table-tasks {
+  width: 100%;
+  background-color: #FFF;
+  tbody tr > td {
+    border: 1px solid #DDDDDD;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  tbody tr {
+    &:hover { background-color: #F5F5F5; }
+  }
+  .input-cell {
+    padding-left: 10px;
+    border: none;
+  }
+  .button-cell {
+    border: none;
+  }
+  .id-cell {
+    text-align: center;
+    min-width: 3%;
+  }
+  .state-cell {
+    text-align: center;
+    min-width: 4%;
+    &:hover {
+      span { color: #AF2D27; }
+    }
+  }
+  .name-cell {
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

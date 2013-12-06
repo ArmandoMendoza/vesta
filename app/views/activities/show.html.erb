@@ -50,3 +50,27 @@
 <% end %>
 </div>
 <%= link_to "Imagenes", [@project, @activity, :images] %>
+<p></p>
+
+<br>
+<div>
+
+
+<table class="table-tasks">
+  <tbody>
+    <!-- FORM -->
+    <tr>
+      <td class="input-cell" colspan="3">
+        <input class="add-task" type="text">
+      </td>
+      <td class="button-cell">
+        <button class="btn btn-dark btn-sm" type="button">Agregar</button>
+      </td>
+    </tr>
+
+    <!-- TASK LIST -->
+    <%= render "shared/task_cell" %>
+  </tbody>
+</table>
+
+</div>
