@@ -1,0 +1,7 @@
+<% if @task.new_record? %>
+  console.log("No Guardo")
+<% else %>
+  $('#task_description').val('')
+  $('.table-tasks tbody').append("<%= j render(partial:'shared/task_cell',
+    locals: { task: @task } ) %>")
+<% end %>
