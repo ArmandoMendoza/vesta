@@ -1,4 +1,4 @@
 jQuery ->
-  $('.table a').tooltip();
-  $('.check').tooltip();
-  $('.chosen').chosen();
+  $('.table a').tooltip()
+  $('.table-tasks a').tooltip()
+  $('.chosen').chosen()

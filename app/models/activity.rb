@@ -19,8 +19,10 @@ class Activity < ActiveRecord::Base
   belongs_to :project
   has_many :executions
   has_many :followers
+  has_many :tasks
   has_many :users, through: :followers
   has_many :images, as: :imageable
+
 
   #### Validations ####
   validates_presence_of :name, :init_date, :execution_time, :unit_execution_time

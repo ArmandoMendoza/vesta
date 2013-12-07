@@ -59,17 +59,20 @@
 <table class="table-tasks">
   <tbody>
     <!-- FORM -->
+    <%= form_for Task.new, url: [@project, @activity, :tasks], remote: true do |f| %>
     <tr>
       <td class="input-cell" colspan="3">
-        <input class="add-task" type="text">
+        <%= f.text_field :description, class: "add-task"%>
       </td>
       <td class="button-cell">
-        <button class="btn btn-dark btn-sm" type="button">Agregar</button>
+        <%= f.submit "Agregar", class: "btn btn-dark btn-sm" %>
       </td>
     </tr>
-
+    <% end %>
     <!-- TASK LIST -->
-    <%= render "shared/task_cell" %>
+    <% @activity.tasks.each do |task| %>
+      <%= render partial: "shared/task_cell", locals: { task: task } %>
+    <% end %>
   </tbody>
 </table>
 
