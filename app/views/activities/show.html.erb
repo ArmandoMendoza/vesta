@@ -59,7 +59,7 @@
 <table class="table-tasks">
   <tbody>
     <!-- FORM -->
-    <%= form_for Task.new, url: [@project, @activity, :task], remote: true do |f| %>
+    <%= form_for Task.new, url: [@project, @activity, :tasks], remote: true do |f| %>
     <tr>
       <td class="input-cell" colspan="3">
         <%= f.text_field :description, class: "add-task"%>

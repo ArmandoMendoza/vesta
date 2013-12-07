@@ -95,6 +95,11 @@ module ApplicationHelper
     end
   end
 
+  def link_to_delete_task(url)
+    link_to raw("&times;"), url, class: 'close', aria_hidden: true, remote: true, method: :delete,
+      title: "Eliminar", data: { confirm: "Desea eliminar tarea?", toggle: 'tooltip' }
+  end
+
   def class_completed(state)
     "task-completed" if state
   end
