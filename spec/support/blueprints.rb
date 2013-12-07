@@ -137,3 +137,9 @@ Image.blueprint(:activity) do
   image_file { File.open("#{Rails.root}/spec/fixtures/image.jpg") }
   imageable { Activity.make! }
 end
+
+Task.blueprint do
+  description { "An a Task" }
+  complete { false }
+  activity { Activity.make! }
+end
