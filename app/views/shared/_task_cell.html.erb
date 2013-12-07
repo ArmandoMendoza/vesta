@@ -1,11 +1,10 @@
-<tr>
+<tr id= <%= "task-#{task.id}" %> class=<%= class_completed(task.complete?) %> >
   <td class="id-cell"><%= task.id %></td>
   <td class="state-cell">
-    <a href="">
-    <span class="glyphicon glyphicon-check" data-toggle="tooltip" title="first tooltip"></span>
-    </a>
+    <%= link_to_change_complete(task.complete?, [:mark, task.activity.project, task.activity, task]) %>
   </td>
   <td class="name-cell" colspan="2">
     <%= task.description %>
+    <button type="button" class="close" aria-hidden="true">&times;</button>
   </td>
 </tr>

@@ -8,4 +8,10 @@ class Task < ActiveRecord::Base
   #### Scopes ####
   default_scope -> { order(:id) }
 
+  #### Instance Methods ####
+
+  def mark
+    toggle!(:complete)
+  end
+
 end

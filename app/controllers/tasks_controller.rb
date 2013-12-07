@@ -9,6 +9,16 @@ class TasksController < ApplicationController
   def update
   end
 
+  def destroy
+    @task = @activity.tasks.find(params[:id])
+    @task.destroy
+  end
+
+  def mark
+    @task = @activity.tasks.find(params[:id])
+    @task.mark
+  end
+
   private
     def get_parents
       @project ||= Project.find(params[:project_id])

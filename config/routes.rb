@@ -1,6 +1,4 @@
 Vesta::Application.routes.draw do
-  get "tasks/create"
-  get "tasks/update"
   root "home#index"
   devise_for :users
 
@@ -15,7 +13,9 @@ Vesta::Application.routes.draw do
   resources :projects do
     resources :activities do
       resource :execution, only: :create
-      resource :task, only: [:create, :update]
+      resources :tasks, only: [:create, :update, :destroy] do
+        patch :mark, on: :member
+      end
       resources :images, except: :show, controller: 'activities/images'
     end
 

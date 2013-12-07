@@ -81,6 +81,24 @@ module ApplicationHelper
     content_tag(:button, text, type: "submit", value: text, class: "btn btn-vesta btn-form col-md-6")
   end
 
+  # HELPERS TASKS INTERFACE
+  def link_to_change_complete(state, url)
+    if state
+      css_class = "glyphicon glyphicon-check"
+      title = "Desmarcar como completada"
+    else
+      css_class = "glyphicon glyphicon-unchecked"
+      title = "Marcar como completada"
+    end
+    link_to(url, title: title, remote: true, method: :patch, data: { toggle: 'tooltip' }) do
+      content_tag(:span, nil, class: css_class)
+    end
+  end
+
+  def class_completed(state)
+    "task-completed" if state
+  end
+
   private
     def add_class(*args, default_class)
       options = args.extract_options!
