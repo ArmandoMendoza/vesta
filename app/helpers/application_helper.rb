@@ -90,7 +90,7 @@ module ApplicationHelper
       css_class = "glyphicon glyphicon-unchecked"
       title = "Marcar como completada"
     end
-    link_to(url, title: title, remote: true, method: :patch, data: { toggle: 'tooltip' }) do
+    link_to(url, class: 'mark-task', title: title, remote: true, method: :patch, data: { toggle: 'tooltip' }) do
       content_tag(:span, nil, class: css_class)
     end
   end
