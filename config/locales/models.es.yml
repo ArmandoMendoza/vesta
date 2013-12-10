@@ -7,6 +7,8 @@ es:
       project: "Proyecto"
       collaborator: "Colaborador"
       activity: "Actividad"
+      image: "Imagen"
+      task: "Tarea"
     attributes:
       user:
         first_name: "Nombre"
@@ -52,3 +54,8 @@ es:
         unit_execution_time: "Unidad"
         percent_of_the_project: "Porcentaje del Proyecto"
         state: "Estatus"
+      image:
+        description: "Descripcion"
+        image_file: "Archivo de Imagen"
+      task:
+        description: "Descripcion"
