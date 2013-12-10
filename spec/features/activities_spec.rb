@@ -31,8 +31,8 @@ describe "Activities" do
     it "should have show all information of project" do
       expect(page).to have_content(@activity.name)
       expect(page).to have_content(@activity.description)
-      expect(page).to have_content(@activity.init_date)
-      expect(page).to have_content(@activity.finish_date)
+      expect(page).to have_content(@activity.init_date.strftime('%d-%m-%Y'))
+      expect(page).to have_content(@activity.finish_date.strftime('%d-%m-%Y'))
       expect(page).to have_content(@activity.full_execution_time)
       expect(page).to have_content("#{@activity.current_execution.percent}%")
     end
@@ -62,9 +62,9 @@ describe "Activities" do
         end
         expect(page).to have_content("Actividad de Pruebas")
         expect(page).to have_content("Nada de importancia")
-        expect(page).to have_content("2013-01-01")
-        expect(page).to have_content("10 days")
-        expect(page).to have_content("2013-01-11")
+        expect(page).to have_content("01-01-2013")
+        expect(page).to have_content("10 Dias")
+        expect(page).to have_content("11-01-2013")
       end
     end
 

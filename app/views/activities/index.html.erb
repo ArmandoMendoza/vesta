@@ -16,8 +16,8 @@
     <tr>
       <td><%= activity.name %></td>
       <td><%= activity.description %></td>
-      <td><%= activity.init_date %></td>
-      <td><%= activity.finish_date %></td>
+      <td><%= format_date(activity.init_date) %></td>
+      <td><%= format_date(activity.finish_date) %></td>
       <td><%= activity.full_execution_time %></td>
       <td><%= activity.state %></td>
       <% if can? :read, activity %>
