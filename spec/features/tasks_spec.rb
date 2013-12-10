@@ -27,8 +27,23 @@ describe "Tasks" do
           expect(page).to have_content('A new task for you.')
         end
       end
+    end
 
-      pending('test a change the state of task')
+    describe "User mark as completed an a task", js: true do
+      before do
+        @task = Task.make!(activity: @activity)
+      end
+
+      it "Should change the state of task" do
+        visit project_activity_path(@project, @activity)
+        row = find("#task-#{@task.id}")
+        within('.table-tasks') do
+          row.find(".mark-task").click
+        end
+        expect(page).to have_selector("#task-#{@task.id}.task-completed")
+        @task.reload
+        expect(@task).to be_completed
+      end
     end
   end
 end

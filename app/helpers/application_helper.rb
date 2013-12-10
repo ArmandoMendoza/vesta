@@ -84,7 +84,7 @@ module ApplicationHelper
   end
 
   # HELPERS TASKS INTERFACE
-  def link_to_change_complete(state, url)
+  def link_to_change_completed(state, url)
     if state
       css_class = "glyphicon glyphicon-check"
       title = "Desmarcar como completada"
