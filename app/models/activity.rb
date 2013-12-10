@@ -62,7 +62,7 @@ class Activity < ActiveRecord::Base
   end
 
   def full_execution_time
-    "#{execution_time} #{unit_execution_time}"
+    "#{execution_time} #{TRANSLATED_UNITS.key(unit_execution_time)}"
   end
 
   private

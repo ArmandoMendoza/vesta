@@ -1,5 +1,6 @@
 module ApplicationHelper
 
+  # PANELS
   def form_panel(title)
     content_tag(:div, class: "panel panel-default") do
       content_tag(:div, class: "panel-heading") do
@@ -48,6 +49,7 @@ module ApplicationHelper
     end
   end
 
+  # LINKS AND BUTTONS
   def table_link_to_new(options)
     options[:text] ||= "Nuevo"
     options[:url] ||= "#"
@@ -102,6 +104,11 @@ module ApplicationHelper
 
   def class_completed(state)
     "task-completed" if state
+  end
+
+  # FORMATS
+  def format_date(date)
+    date.strftime('%d-%m-%Y')
   end
 
   private

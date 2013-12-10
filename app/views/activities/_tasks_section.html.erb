@@ -1,0 +1,20 @@
+<!-- FORM -->
+<%= form_for Task.new, url: [@project, @activity, :tasks], remote: true,
+  html: { class: "form-inline" } do |f| %>
+  <div class="form-group" style="width: 70%">
+    <%= f.text_field :description, class: "form-control"%>
+  </div>
+  <%= f.submit "Agregar", class: "btn btn-dark btn-sm" %>
+<% end %>
+<br>
+<!-- TASK LIST -->
+<% if @activity.tasks.any? %>
+  <table class="table-tasks">
+    <tbody>
+      <% @activity.tasks.each do |task| %>
+        <%= render partial: "shared/task_cell", locals: { project: @project,
+          activity: @activity, task: task } %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

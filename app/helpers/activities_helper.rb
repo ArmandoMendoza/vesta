@@ -12,11 +12,15 @@ module ActivitiesHelper
   end
 
   def progress_bar_of_execution(percent)
-    content_tag(:div, class: "progress") do
-      content_tag(:div, class: "progress-bar", role: "progressbar", "aria-valuemin" => 0,
+    content_tag(:div, class: "progress", style: "height: 10px") do
+      content_tag(:div, class: "progress-bar progress-bar-warning", role: "progressbar", "aria-valuemin" => 0,
       "aria-valuemax" => 100, "aria-valuenow" => percent, style: "width: #{percent}%") do
         content_tag(:span, "#{percent}% Ejecutado", class: "sr-only")
       end
     end
+  end
+
+  def activity_parent(activity)
+    activity.has_parent? ? activity.parent.name : "Ninguna"
   end
 end

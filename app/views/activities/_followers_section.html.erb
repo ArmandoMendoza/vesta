@@ -1,0 +1,13 @@
+<% if @activity.followers.any? %>
+  <table class="table-followers">
+    <tbody>
+    <% @activity.followers.includes(:user).each do |follower| %>
+      <tr class="follower">
+        <td class="follower-image"></td>
+        <td class="follower-name"><%= follower.user.full_name %></td>
+        <td class="follower-type">Seguidor</td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

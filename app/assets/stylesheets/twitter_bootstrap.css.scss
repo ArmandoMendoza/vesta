@@ -6,6 +6,14 @@ $panel-default-text: #47474A;
 $link-color: #AF2D27;
 
 @import "bootstrap";
+
+// Elimina los feos bordes que se hacen cuando se pierde foco.
+a:focus {
+  outline: 0;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
 // Overwrite the rule table of Twiter Bootstrap
 .table thead > tr > th,
 .table thead > tr > td,

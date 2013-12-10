@@ -1,29 +1,30 @@
-<h1>This is important Layout! WORK in it!</h1>
-<h2><%= @activity.name %></h2>
+<%= progress_bar_of_execution(@activity.current_execution.percent) %>
 <div class="row">
-  <div class="col-md-2 current-percent">
-    <%= "#{@activity.current_execution.percent}%"  %>
-    <%= progress_bar_of_execution(@activity.current_execution.percent) %>
+  <div class="col-md-7">
+    <%= panel(@activity.name, false) do %>
+      <%= render "activity_section" %>
+    <% end %>
+  </div>
+  <div class="col-md-5">
+    <%= panel("lista de tareas", false) do %>
+      <%= render "tasks_section" %>
+    <% end %>
   </div>
 </div>
 <div class="row">
+  <div class="col-md-12">
+    <%= panel("Seguidores de Actividad", false) do %>
+      <%= render "followers_section" %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+<div class="row">
   <div class="col-md-4">
-    <p>
-    <%= @activity.description  %>
-    </p>
-    <p>
-    <%= @activity.init_date  %>
-    </p>
-    <p>
-    <%= @activity.finish_date  %>
-    </p>
-    <p>
-    <%= @activity.full_execution_time %>
-    </p>
-    <p>
-    <%= @activity.state %>
-    </p>
-    <p>
     <% if @activity.has_parent? %>
       <p>Depende de: <%= @activity.parent.name %> </p>
       <% if @activity.parent_finished? %>
@@ -40,40 +41,6 @@
   </div>
 </div>
 <div class="row">
-<% if @activity.followers.any? %>
-  Seguidores
-  <ul>
-  <% @activity.followers.includes(:user).each do |follower| %>
-  <li><%= follower.user.full_name %></li>
-  <% end %>
-  </ul>
-<% end %>
+
 </div>
 <%= link_to "Imagenes", [@project, @activity, :images] %>
-<p></p>
-
-<br>
-<div>
-
-
-<table class="table-tasks">
-  <tbody>
-    <!-- FORM -->
-    <%= form_for Task.new, url: [@project, @activity, :tasks], remote: true do |f| %>
-    <tr>
-      <td class="input-cell" colspan="3">
-        <%= f.text_field :description, class: "add-task"%>
-      </td>
-      <td class="button-cell">
-        <%= f.submit "Agregar", class: "btn btn-dark btn-sm" %>
-      </td>
-    </tr>
-    <% end %>
-    <!-- TASK LIST -->
-    <% @activity.tasks.each do |task| %>
-      <%= render partial: "shared/task_cell", locals: { task: task } %>
-    <% end %>
-  </tbody>
-</table>
-
-</div>

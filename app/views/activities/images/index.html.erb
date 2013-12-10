@@ -1,5 +1,5 @@
 <%= panel("Imagenes de #{@activity.name}", (can?(:create, Image)),
-  button_options: { text: "Nuevo Imagen", url: [:new, @project, @activity, :image] }) do %>
+  button_options: { text: "Nueva Imagen", url: [:new, @project, @activity, :image] }) do %>
   <div class="add-image">
     <%= form_for [@project, @activity, Image.new], html: { multipart: true,
           id: 'form-add-image' } do |f| %>
@@ -21,7 +21,7 @@
 <script id="template-upload" type="text/x-tmpl">
   <div class="upload">
     {%=o.name%}
-    <div class="progress"><div class="progress-bar" style="width: 0%"></div></div>
+    <div class="progress"><div class="progress-bar progress-bar-warning" style="width: 0%"></div></div>
   </div>
 </script>
 

@@ -3,10 +3,10 @@
 body {
   background: url("background.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
   color: #47474A;
-  font-family: "Open Sans",sans-serif;
-  font-size: 11px;
-  font-weight: 400;
-  line-height: 1.3em;
+  font-family: "Open Sans", sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  line-height: 1.3em !important;
   padding-top: 50px;
 }
 
@@ -85,6 +85,21 @@ body {
 
 // Panel
 .text-title-panel {
+  vertical-align: center;
+  font-size: 20px;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.info-box {
+  margin-top: 0;
+  dt {
+    color: #AF2D27;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  dd {
+    padding-left: 5px;
+    padding-bottom: 5px;
+  }
 }

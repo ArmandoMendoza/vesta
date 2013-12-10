@@ -1,21 +1,3 @@
-.current-percent {
-  margin: 15px;
-  border: 1px solid #DDDDDD;
-  font-weight: bold;
-  font-size: 45px;
-  text-align: center;
-  border-radius: 3px 3px 3px 3px;
-  -moz-border-radius: 3px 3px 3px 3px;
-  -webkit-border-radius: 3px 3px 3px 3px;
-}
-
-.add-task {
-  border: 1px solid #DDDDDD;
-  display: table-cell;
-  // padding: 6px 10px;
-  height: 32px;
-  width: 100%;
-}
 .table-tasks {
   width: 100%;
   background-color: #FFF;
@@ -27,20 +9,10 @@
   tbody tr {
     &:hover { background-color: #F5F5F5; }
   }
-  .input-cell {
-    padding-left: 10px;
-    border: none;
-  }
-  .button-cell {
-    border: none;
-  }
-  .id-cell {
-    text-align: center;
-    min-width: 3%;
-  }
+
   .state-cell {
     text-align: center;
-    min-width: 4%;
+    min-width: 8%;
     &:hover {
       span { color: #AF2D27; }
     }
@@ -57,4 +29,47 @@
 }
 .mark-task {
   color: #47474A;
+}
+
+.table-followers {
+  width: 100%;
+  background-color: #FFF;
+  tbody tr > td {
+    height: 40px;
+    border-bottom: 1px solid #DDDDDD;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  .follower-image {
+    width: 4%;
+    background-color: #47474A;
+  }
+  .follower-name {
+    padding-left: 10px;
+    font-size: 12px;
+    font-weight: bolder;
+  }
+  .follower-type {
+    width: 20%;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bolder;
+    color: #AF2D27;
+  }
+}
+
+.current-execution {
+  color: #AF2D27;
+  height: 100%;
+  width: 100%;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 60px;
+}
+.caption-execution {
+  color: #AF2D27;
+  font-size: 25px;
+  padding-left: 10px;
+  text-align: center;
+  font-weight: bold;
 }

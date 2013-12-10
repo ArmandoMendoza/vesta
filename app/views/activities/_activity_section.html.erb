@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-4">
+    <dl class="info-box">
+      <dt>Descripcion</dt>
+      <dd><%= @activity.description %></dd>
+      <dt>Fecha de Inicio</dt>
+      <dd><%= format_date @activity.init_date %></dd>
+      <dt>Fecha de Finalizacion</dt>
+      <dd><%= format_date @activity.finish_date %></dd>
+    </dl>
+  </div>
+  <div class="col-md-4">
+    <dl class="info-box">
+      <dt>Tiempo de Ejecucion</dt>
+      <dd><%= @activity.full_execution_time %></dd>
+      <dt>Estatus</dt>
+      <dd><%= @activity.state %></dd>
+      <dt>Actividad Padre</dt>
+      <dd><%= activity_parent(@activity) %></dd>
+    </dl>
+  </div>
+  <div class="col-md-3">
+    <div class="current-execution">
+      <%= @activity.current_execution.percent %>%
+    </div>
+    <div class="caption-execution">Ejecutado</div>
+  </div>
+</div>

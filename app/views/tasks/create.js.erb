@@ -3,5 +3,5 @@
 <% else %>
   $('#task_description').val('')
   $('.table-tasks tbody').append("<%= j render(partial:'shared/task_cell',
-    locals: { task: @task } ) %>")
+    locals: { project: @project, activity: @activity, task: @task } ) %>")
 <% end %>
