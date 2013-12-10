@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131206172734) do
+ActiveRecord::Schema.define(version: 20131210175057) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -82,6 +82,8 @@ ActiveRecord::Schema.define(version: 20131206172734) do
     t.string   "image_file"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "uploaded_by"
+    t.boolean  "publish",        default: false
   end
 
   add_index "images", ["imageable_id", "imageable_type"], name: "index_images_on_imageable_id_and_imageable_type", using: :btree

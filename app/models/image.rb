@@ -8,6 +8,12 @@ class Image < ActiveRecord::Base
   #### Callbacks ####
   before_save :set_description
 
+  #### Instance Methods ####
+
+  def uploaded_by_user
+    User.find(uploaded_by)
+  end
+
   private
     def set_description
       self.description = "imagen de actividad" if description.blank? || description.nil?

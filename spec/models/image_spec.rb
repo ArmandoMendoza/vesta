@@ -10,6 +10,8 @@ describe Image do
       expect(image.image_file.current_path).to eq(Rails.root.to_s +
         "/public/uploads/image/image_file/#{image.id}/image.jpg")
       expect(image.image_file.identifier).to eq('image.jpg')
+      expect(image.publish).to be_false
+      expect(image.uploaded_by).to be_nil
     end
   end
 end

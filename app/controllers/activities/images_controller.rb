@@ -15,6 +15,7 @@ class Activities::ImagesController < ApplicationController
 
   def create
     respond_to do |format|
+      @image.uploaded_by = current_user.id
       if @activity.images << @image
         format.html { redirect_to [@project, @activity, :images] }
         format.js
@@ -40,6 +41,6 @@ class Activities::ImagesController < ApplicationController
 
   private
     def set_image_params
-      params[:image] = params.require(:image).permit!
+      params[:image] = params.require(:image).permit(:description, :image_file)
     end
 end

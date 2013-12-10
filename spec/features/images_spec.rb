@@ -23,6 +23,7 @@ describe "Images" do
         visit project_activity_images_path(@project, @activity)
         attach_file 'image_image_file', fixture_path + "/image.jpg"
         expect(page).to have_content('imagen de actividad')
+        expect(@activity.images.last.uploaded_by).to eq(@admin.id)
       end
     end
   end
