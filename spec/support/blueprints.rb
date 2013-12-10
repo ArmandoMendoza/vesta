@@ -140,6 +140,6 @@ end
 
 Task.blueprint do
   description { "An a Task" }
-  complete { false }
+  completed { false }
   activity { Activity.make! }
 end

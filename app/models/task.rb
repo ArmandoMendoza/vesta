@@ -11,7 +11,7 @@ class Task < ActiveRecord::Base
   #### Instance Methods ####
 
   def mark
-    toggle!(:complete)
+    toggle!(:completed)
   end
 
 end

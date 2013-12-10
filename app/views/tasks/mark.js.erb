@@ -1,5 +1,5 @@
 var tr = $('#task-<%= @task.id %>')
-<% if @task.complete? %>
+<% if @task.completed? %>
   tr.toggleClass('task-completed')
   tr.find('.mark-task').attr('data-original-title', 'Desmarcar como completada')
   tr.find('span').removeClass("glyphicon-unchecked").addClass("glyphicon-check")
