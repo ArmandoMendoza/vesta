@@ -1,14 +1,18 @@
 <%= panel("Imagenes de #{@activity.name}", (can?(:create, Image)),
   button_options: { text: "Nueva Imagen", url: [:new, @project, @activity, :image] }) do %>
-  <div class="add-image">
-    <%= form_for [@project, @activity, Image.new], html: { multipart: true,
-          id: 'form-add-image' } do |f| %>
-      <%= f.file_field :image_file, multiple: true, name: "image[image_file]" %>
-    <% end %>
+
+  <div class="alert alert-warning">
+    <span style="font-size: 14px">
+      <strong>¡Importante!</strong> Seleccione las imagenes que desea subir o arrastre y suelte los archivos en el navegador.
+    </span>
+    <div class="add-image" style="margin-top: 10px">
+      <%= form_for [@project, @activity, Image.new], html: { multipart: true,
+        id: 'form-add-image' } do |f| %>
+        <%= f.file_field :image_file, multiple: true, name: "image[image_file]" %>
+      <% end %>
+    </div>
   </div>
-  <br>
-  <div class="uploader">
-  </div>
+  <div class="uploader"></div>
   <div class="gallery">
     <% @images.each do |image| %>
       <%= render partial: "shared/thumbnail", locals: { image: image,
