@@ -1,6 +1,7 @@
 class ExecutionsController < ApplicationController
   before_action :set_execution_params, only: :create
   before_action :get_project_and_activity
+  before_action :check_activity_active
   authorize_resource
 
   def create
@@ -18,6 +19,10 @@ class ExecutionsController < ApplicationController
   end
 
   private
+    def check_activity_active
+      redirect_to :back, notice: "Actividad padre aun en ejecucion" unless @activity && @activity.is_active?
+    end
+
     def get_project_and_activity
       @project = Project.find(params[:project_id]) if params[:project_id].present?
       @activity = @project.activities.find(params[:activity_id]) if params[:activity_id].present? && @project.present?

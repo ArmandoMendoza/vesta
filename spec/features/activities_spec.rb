@@ -66,6 +66,20 @@ describe "Activities" do
         expect(page).to have_content("10 Dias")
         expect(page).to have_content("11-01-2013")
       end
+
+      it "should assign the current user as owner of activity" do
+        visit new_project_activity_path(@project)
+        within('form') do
+          fill_in :activity_name, with: "Actividad de Pruebas"
+          fill_in :activity_description, with: "Nada de importancia"
+          fill_in :activity_init_date, with: "01-01-2013"
+          fill_in :activity_execution_time, with: "10"
+          select "Dias", from: :activity_unit_execution_time
+          click_button "Guardar"
+        end
+        activity = Activity.last
+        expect(activity.role_of(@admin)).to eq("owner")
+      end
     end
 
     context "with invalid values" do

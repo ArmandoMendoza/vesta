@@ -8,8 +8,9 @@
   <%= f.input :parent_id, collection: Activity.all, label_method: :name, value_method: :id,
     label: "Depende de", input_html: { class: "chosen",
     data: { placeholder: "Seleccione Actividad" } }%>
-  <%= f.association :users, collection: @project.users, label_method: :full_name, value_method: :id,
-    label: "Seguidores", input_html: {class: "chosen", data: { placeholder: "Seleccione Usuarios" } } %>
+  <%= f.association :users, collection: @project.list_of_users_without(current_user),
+    label_method: :full_name, value_method: :id, label: "Seguidores",
+    input_html: { class: "chosen", data: { placeholder: "Seleccione Usuarios" } } %>
   <%= submit_button %>
   <%= button_form_to_back "Volver", [@project, :activities] %>
 <% end %>

@@ -22,7 +22,7 @@ describe "Tasks" do
       it "should create a new task", js: true do
         visit project_activity_path(@project, @activity)
         fill_in :task_description, with: "A new task for you."
-        click_button "Agregar"
+        find('#task_description').native.send_keys(:return)
         within('.table-tasks') do
           expect(page).to have_content('A new task for you.')
         end

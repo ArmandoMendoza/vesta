@@ -18,6 +18,7 @@ class ActivitiesController < ApplicationController
 
   def create
     if @project.activities << @activity
+      Follower.create_owner_to_activity(current_user, @activity)
       redirect_to [@project, :activities]
     else
       render :new

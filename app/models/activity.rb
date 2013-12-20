@@ -37,12 +37,16 @@ class Activity < ActiveRecord::Base
     followers.where(user_id: user.id).first.try(:role)
   end
 
+  def is_active?
+    has_parent? ? parent_finished? : true
+  end
+
   def has_parent?
     parent.present?
   end
 
   def parent_finished?
-    parent.finished? if has_parent?
+    parent.finished?
   end
 
   def executing?

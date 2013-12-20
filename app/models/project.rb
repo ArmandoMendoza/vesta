@@ -24,6 +24,12 @@ class Project < ActiveRecord::Base
     collaborators.where(user_id: user.id).first.try(:collaborator_type)
   end
 
+  def list_of_users_without(user = nil)
+    array_of_collaborators = users.to_a
+    array_of_collaborators.delete(user)
+    array_of_collaborators
+  end
+
   private
     def set_defaults
       self.advance ||= 0

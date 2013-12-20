@@ -6,20 +6,9 @@
     <% end %>
   </div>
   <div class="col-md-5">
-    <% if @activity.has_parent? %>
-      <p>Depende de: <%= @activity.parent.name %> </p>
-      <% if @activity.parent_finished? %>
-        <%= popover_to_execution_form(@execution, project_activity_execution_path(@project,
-            @activity, @execution)) %>
-      <% end %>
-    <% else %>
-      <% if @activity.executing? %>
-        <%= popover_to_execution_form(@execution, project_activity_execution_path(@project,
-            @activity, @execution)) %>
-        <% end %>
-    <% end %>
-    </p>
-  <%= link_to "Imagenes", [@project, @activity, :images] %>
+    <%= popover_to_execution_form(@execution, project_activity_execution_path(@project,
+      @activity, @execution)) %>
+    <%= link_to "Imagenes", [@project, @activity, :images] %>
   </div>
 </div>
 <div class="row">
