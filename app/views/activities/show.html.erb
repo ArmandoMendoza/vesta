@@ -6,25 +6,6 @@
     <% end %>
   </div>
   <div class="col-md-5">
-    <%= panel("Seguidores de Actividad", false) do %>
-      <%= render "followers_section" %>
-    <% end %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <%= panel("lista de tareas", false) do %>
-      <%= render "tasks_section" %>
-    <% end %>
-  </div>
-</div>
-
-
-
-
-
-<div class="row">
-  <div class="col-md-4">
     <% if @activity.has_parent? %>
       <p>Depende de: <%= @activity.parent.name %> </p>
       <% if @activity.parent_finished? %>
@@ -38,9 +19,39 @@
         <% end %>
     <% end %>
     </p>
+  <%= link_to "Imagenes", [@project, @activity, :images] %>
   </div>
 </div>
 <div class="row">
-
+  <div class="col-md-12">
+    <%= panel("Ultimas Imagenes", false) do %>
+      <div class="thumb-gallery">
+        <% @activity.images.each_with_index do |image, index| %>
+          <%= thumb_link(image, index) %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
-<%= link_to "Imagenes", [@project, @activity, :images] %>
+<div class="row">
+  <div class="col-md-6">
+    <%= panel("lista de tareas", false) do %>
+      <%= render "tasks_section" %>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <%= panel("Seguidores de Actividad", false) do %>
+      <%= render "followers_section" %>
+    <% end %>
+  </div>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    $("a[rel^='prettyPhoto']").prettyPhoto({
+      social_tools: '',
+      show_title: false
+    });
+  });
+</script>

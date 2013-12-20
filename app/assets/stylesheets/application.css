@@ -13,5 +13,6 @@
  *= require touch.timeline.light
  *= require chosen.min
  *= require zebra_datepicker
+ *= require prettyphoto-rails
  *= require_tree .
  */

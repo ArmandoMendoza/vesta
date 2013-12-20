@@ -13,7 +13,7 @@ module ActivitiesHelper
 
   def progress_bar_of_execution(percent)
     content_tag(:div, class: "progress", style: "height: 10px") do
-      content_tag(:div, class: "progress-bar progress-bar-warning", role: "progressbar", "aria-valuemin" => 0,
+      content_tag(:div, class: "progress-bar progress-bar-vesta", role: "progressbar", "aria-valuemin" => 0,
       "aria-valuemax" => 100, "aria-valuenow" => percent, style: "width: #{percent}%") do
         content_tag(:span, "#{percent}% Ejecutado", class: "sr-only")
       end
@@ -22,5 +22,14 @@ module ActivitiesHelper
 
   def activity_parent(activity)
     activity.has_parent? ? activity.parent.name : "Ninguna"
+  end
+
+  def thumb_link(image, index)
+    css_style = index > 2 ? "display: none;" : "display: inline;"
+    content_tag(:div, style: css_style) do
+      link_to(image.image_file.url, rel: "prettyPhoto[pp_gal]", title: image.description) do
+        image_tag(image.image_file.index_thumb.url)
+      end
+    end
   end
 end

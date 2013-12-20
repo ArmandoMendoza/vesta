@@ -17,4 +17,5 @@
 //= require jquery-fileupload/vendor/tmpl
 //= require chosen.jquery.min
 //= require zebra_datepicker
+//= require prettyphoto-rails
 //= require_tree .

@@ -5,7 +5,6 @@ gem 'devise'
 gem 'kaminari'
 gem 'pg'
 gem 'jbuilder', '~> 1.2'
-gem 'turbolinks'
 gem 'simple_form'
 gem 'cancan'
 gem 'acts_as_tree', '~> 1.4.0'
@@ -19,8 +18,9 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
 gem 'compass-rails', '~> 2.0.alpha.0'
-gem 'jquery-turbolinks'
 gem 'jquery-fileupload-rails'
+gem 'prettyphoto-rails'
+
 
 group :doc do
   gem 'sdoc', require: false

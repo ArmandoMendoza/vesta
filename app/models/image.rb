@@ -5,6 +5,9 @@ class Image < ActiveRecord::Base
   #### Relations ####
   belongs_to :imageable, polymorphic: true
 
+  #### Scopes #####
+  default_scope -> { order('created_at DESC') }
+
   #### Callbacks ####
   before_save :set_description
 
