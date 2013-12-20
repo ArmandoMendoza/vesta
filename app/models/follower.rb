@@ -7,8 +7,8 @@ class Follower < ActiveRecord::Base
   belongs_to :activity
 
   #### Validations ####
-  validates_presence_of :activity_id, :user_id
-  validates_uniqueness_of :user_id, scope: :activity_id
+  # validates_presence_of :activity_id, :user_id
+  # validates_uniqueness_of :user_id, scope: :activity_id
 
   #### Callback ####
   before_save :set_role_default

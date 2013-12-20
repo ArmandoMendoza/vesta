@@ -5,5 +5,5 @@ class Collaborator < ActiveRecord::Base
 
   #### Validations ####
   validates_presence_of :project_id, :user_id, :collaborator_type
-  # validates_uniqueness_of :collaborator_type, scope: :project_id
+  validates_uniqueness_of :collaborator_type, scope: [:project_id, :user_id]
 end
