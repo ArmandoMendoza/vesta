@@ -16,10 +16,12 @@ module ApplicationHelper
     options = args.extract_options!
     options[:table_class] ||= "table table-condensed table-hover"
     content_header = content_tag(:span, title, class: "text-title-panel")
+    content_header << content_tag(:div, table_link_to_back(options[:url_to_back]),
+      style: "float:right")
     if button
       options[:button_options] ||= {}
       content_header << content_tag(:div, table_link_to_new(options[:button_options]),
-        style: "float:right")
+        style: "float:right; margin-right: 5px")
     end
     content_tag(:div, class: "panel panel-default") do
       content_tag(:div, class: "panel-heading") do
@@ -33,7 +35,7 @@ module ApplicationHelper
 
   def panel(title, button = false, *args)
     options = args.extract_options!
-    content_header = content_tag(:span, title, class: "text-title-panel")
+    content_header = content_tag(:span, title, class: "text-title-small-panel")
     if button
       options[:button_options] ||= {}
       content_header << content_tag(:div, table_link_to_new(options[:button_options]),
@@ -49,7 +51,6 @@ module ApplicationHelper
     end
   end
 
-  # LINKS AND BUTTONS
   def table_link_to_new(options)
     options[:text] ||= "Nuevo"
     options[:url] ||= "#"
@@ -59,6 +60,14 @@ module ApplicationHelper
     end
   end
 
+  def table_link_to_back(url_to_back)
+    url = url_to_back || :back
+    link_to url, class: "btn btn-dark btn-xs", title: "Volver" do
+      content_tag(:span, nil, class: 'glyphicon glyphicon-circle-arrow-left')
+    end
+  end
+
+  # LINKS AND BUTTONS
   def link_to_edit(text, *args)
     process_args = add_class(*args, " edit")
     process_args = add_options(*process_args, {title: text})
@@ -124,5 +133,4 @@ module ApplicationHelper
       options.merge!(hash_options)
       args << options
     end
-
 end

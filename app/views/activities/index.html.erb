@@ -1,5 +1,6 @@
 <%= table_panel("ACTIVIDADES DE #{@project.name}", (can?(:create, Activity)),
-  button_options: { text: "Nueva Activadad", url: new_project_activity_path }) do %>
+  button_options: { text: "Nueva Actividad", url: new_project_activity_path },
+  url_to_back: projects_path ) do %>
   <thead>
     <tr>
       <th>Nombre</th>
