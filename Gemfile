@@ -10,6 +10,7 @@ gem 'cancan'
 gem 'acts_as_tree', '~> 1.4.0'
 gem 'carrierwave', '~> 0.9.0'
 gem 'mini_magick'
+gem 'acts_as_commentable'
 
 # assets
 gem 'sass-rails', '~> 4.0.0'
