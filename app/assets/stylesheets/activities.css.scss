@@ -68,6 +68,19 @@
   }
 }
 
+.table-comments {
+  width: 100%;
+  background-color: #FFF;
+  tbody tr > td {
+    border: 1px solid #DDDDDD;
+    padding: 6px;
+    height: 35px;
+  }
+  tr {
+    margin-bottom: 10px;
+  }
+}
+
 .current-execution {
   color: #AF2D27;
   height: 100%;

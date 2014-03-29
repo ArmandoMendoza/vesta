@@ -17,6 +17,7 @@ Vesta::Application.routes.draw do
         patch :mark, on: :member
       end
       resources :images, except: :show, controller: 'activities/images'
+      resources :comments, only: [:create, :destroy], controller: 'activities/comments'
     end
 
     resources :collaborators, except: :show
