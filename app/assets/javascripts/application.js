@@ -18,4 +18,6 @@
 //= require chosen.jquery.min
 //= require zebra_datepicker
 //= require prettyphoto-rails
+//= require jquery.timeago
+//= require jquery.timeago.es
 //= require_tree .

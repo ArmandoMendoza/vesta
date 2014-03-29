@@ -9,9 +9,13 @@
 <% if @activity.comments.any? %>
   <table class="table-comments">
     <tbody>
-      <% @activity.comments.each do |comment| %>
+      <% @activity.comments.includes(:user).each do |comment| %>
         <tr>
-          <td><strong><%= comment.user.full_name %>  </strong><%= comment.comment %></td>
+          <td><strong><%= comment.user.full_name %></strong>
+            <%= content_tag(:abbr, nil, class: "timeago",
+              title: comment.created_at.to_time.iso8601) %>:
+            <%= comment.comment %>
+          </td>
         </tr>
       <% end %>
     </tbody>
