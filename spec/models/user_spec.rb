@@ -7,6 +7,7 @@ describe User do
   it { should have_many(:followers) }
   it { should have_many(:projects).through(:collaborators) }
   it { should have_many(:activities).through(:followers) }
+  it { should have_and_belong_to_many(:tasks) }
 
 
   it { should validate_presence_of(:first_name) }

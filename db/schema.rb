@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131227190114) do
+ActiveRecord::Schema.define(version: 20140329202955) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -176,6 +176,14 @@ ActiveRecord::Schema.define(version: 20131227190114) do
   end
 
   add_index "tasks", ["activity_id"], name: "index_tasks_on_activity_id", using: :btree
+
+  create_table "tasks_users", id: false, force: true do |t|
+    t.integer "task_id", null: false
+    t.integer "user_id", null: false
+  end
+
+  add_index "tasks_users", ["task_id"], name: "index_tasks_users_on_task_id", using: :btree
+  add_index "tasks_users", ["user_id"], name: "index_tasks_users_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"

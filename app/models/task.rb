@@ -4,6 +4,7 @@ class Task < ActiveRecord::Base
 
   #### Validations ####
   validates_presence_of :description
+  has_and_belongs_to_many :users
 
   #### Scopes ####
   default_scope -> { order(:id) }

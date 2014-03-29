@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :followers
   has_many :projects, through: :collaborators
   has_many :activities, through: :followers
-
+  has_and_belongs_to_many :tasks
 
   #### Validations ###
   validates_presence_of :first_name, :last_name, :user_type
