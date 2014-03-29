@@ -1,0 +1,23 @@
+<!-- FORM -->
+<%= form_for Comment.new, url: [@project, @activity, :comments], html: { class: "form-inline" } do |f| %>
+  <div class="form-group" style="width: 100%">
+    <%= f.text_field :comment, class: "form-control", placeholder: "Agregar Comentario" %>
+  </div>
+<% end %>
+<br>
+<!-- TASK LIST -->
+<% if @activity.comments.any? %>
+  <table class="table-comments">
+    <tbody>
+      <% @activity.comments.includes(:user).each do |comment| %>
+        <tr>
+          <td><strong><%= comment.user.full_name %></strong>
+            <%= content_tag(:abbr, nil, class: "timeago",
+              title: comment.created_at.to_time.iso8601) %>:
+            <%= comment.comment %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

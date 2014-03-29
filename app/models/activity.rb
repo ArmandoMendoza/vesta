@@ -3,6 +3,7 @@ class Activity < ActiveRecord::Base
   include ActsAsTree
   extend ActsAsTree::Presentation
   acts_as_tree order: "name"
+  acts_as_commentable
 
   #### Constants ####
   STATE = { executing: "executing", stopped: "stopped", finished: "finished" }
