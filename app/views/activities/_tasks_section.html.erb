@@ -1,9 +1,12 @@
 <!-- FORM -->
-<%= form_for Task.new, url: [@project, @activity, :tasks], remote: true,
+<%= simple_form_for Task.new, url: [@project, @activity, :tasks], remote: true,
   html: { class: "form-inline" } do |f| %>
-  <div class="form-group" style="width: 100%">
-    <%= f.text_field :description, class: "form-control", placeholder: "Agregar Tarea" %>
-  </div>
+    <%= f.input :description, html_input: { class: "form-control" }, placeholder: "Agregar Tarea",
+      label: false %>
+    <%= f.association :users, collection: @activity.users,
+      label_method: :full_name, value_method: :id, label: false,
+      input_html: { class: "chosen", data: { placeholder: "Seleccione Usuarios" } } %>
+    <%= f.submit %>
 <% end %>
 <br>
 <!-- TASK LIST -->
