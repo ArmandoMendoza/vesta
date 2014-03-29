@@ -1,3 +1,5 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+jQuery ->
+  if $('#task_description').length > 0
+    $('#task_description').keypress (e) ->
+      if e.which == 13
+        $('form#new_task').submit()

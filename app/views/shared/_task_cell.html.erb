@@ -3,7 +3,8 @@
     <%= link_to_change_completed(task.completed?, [:mark, project, activity, task]) %>
   </td>
   <td class="name-cell">
-    <%= task.description %>
+    <b><%= task.description %></b> <br>
+    <%= "[ asignada a: #{task.users.map(&:full_name).join(' - ')}]" %>
   </td>
   <td class="close-cell">
     <%= link_to_delete_task([project, activity, task]) %>

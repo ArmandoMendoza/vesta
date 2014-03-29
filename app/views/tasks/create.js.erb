@@ -1,5 +1,5 @@
 <% if @task.new_record? %>
-  console.log("No Guardo")
+  console.log("Datos Incompletos")
 <% else %>
   $('#task_description').val('')
   $('.table-tasks tbody').append("<%= j render(partial:'shared/task_cell',
