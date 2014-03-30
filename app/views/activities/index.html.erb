@@ -22,7 +22,7 @@
         <td><%= format_date(activity.finish_date) %></td>
         <td><%= activity.full_execution_time %></td>
         <td><%= activity.state %></td>
-        <% if can? :read, activity %>
+        <% if can? :show, activity %>
           <td><%= link_to_show "detalles", project_activity_path(@project, activity) %></td>
         <% end %>
         <% if can? :edit, activity %>

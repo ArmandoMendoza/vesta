@@ -24,16 +24,17 @@ class Ability
     end
 
     def owner_sub_contractor_abilities(user)
-      can :read, User
-      can :read, Collaborator
-
       can [:read, :update], SubContractor, id: user.company.id
       can [:read, :create, :update], Project, sub_contractor_id: user.company.id
 
-
+      #Usuarios
+      can :read, User
       can [:create, :update], User do |company_user|
         company_user.company == user.company
       end
+
+      #Colaboradores
+      can :read, Collaborator
       can :create, Collaborator do |collaborator|
         collaborator.project.sub_contractor == user.company
       end
@@ -41,9 +42,15 @@ class Ability
         collaborator.project.sub_contractor == user.company &&
         collaborator.user.company == user.company
       end
-      can [:create, :update], Activity do |activity|
+
+      #Actividades
+      can :index, Activity
+      can [:show, :create, :update], Activity do |activity|
         activity.project.sub_contractor == user.company
       end
+
+      #Imagenes
+      can :manage, Image
     end
 
     def owner_contractor_abilities(user)
@@ -78,8 +85,13 @@ class Ability
     end
 
     def resident_abilities(user, project)
+      #Actividades
+      can :index, Activity
       can :show, Activity do |activity|
         activity.follower?(user)
       end
+
+      #Imagenes
+      can :manage, Image
     end
 end

@@ -27,7 +27,7 @@
         <% if can? :edit, project %>
           <td><%= link_to_edit "editar", edit_project_path(project) %></td>
         <% end %>
-        <% if can? :read, Activity %>
+        <% if can? :index, Activity %>
           <td><%= link_to "Actividades", project_activities_path(project) %></td>
         <% end %>
         <% if can? :read, Collaborator %>

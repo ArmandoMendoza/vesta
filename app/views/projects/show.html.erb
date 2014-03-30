@@ -19,7 +19,7 @@
 <%= @project.sub_contractor.name %>
 </p>
 
-<% if can? :read, Activity %>
+<% if can? :index, Activity %>
   <td><%= link_to "Actividades", project_activities_path(@project) %></td>
 <% end %>
 <% if can? :read, Collaborator %>
