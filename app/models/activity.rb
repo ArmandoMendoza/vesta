@@ -42,6 +42,10 @@ class Activity < ActiveRecord::Base
     role_of(user) == Follower::ROLES[:owner]
   end
 
+  def follower?(user)
+    role_of(user) == Follower::ROLES[:follower]
+  end
+
   def is_active?
     has_parent? ? parent_finished? : true
   end

@@ -1,13 +1,20 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
+  def initialize(user, project)
     if user.admin?
       admin_user_permitions
-    elsif (user.owner? && user.company_type == "Contractor")
+    elsif (user.owner? && user.belongs_to_contractor?)
       owner_contractor_abilities(user)
-    elsif (user.owner? && user.company_type == "SubContractor")
+    elsif (user.owner? && user.belongs_to_sub_contractor?)
       owner_sub_contractor_abilities(user)
+    elsif (user.regular? && user.belongs_to_contractor?)
+      regular_contractor_abilities(user)
+    elsif (user.regular? && user.belongs_to_sub_contractor?)
+      regular_sub_contractor_abilities(user)
+      if project.present? && project.role_of(user) == "Residente"
+        resident_abilities(user, project)
+      end
     end
   end
 
@@ -56,7 +63,21 @@ class Ability
       end
     end
 
-    def regular_user
+    def regular_contractor_abilities(user)
       can :manage, User, id: user.id
+      can :read, Contractor, id: user.company.id
+      can :read, Project, contractor_id: user.company.id
+    end
+
+    def regular_sub_contractor_abilities(user)
+      can :manage, User, id: user.id
+      can :read, SubContractor, id: user.company.id
+      can :read, Project, sub_contractor_id: user.company.id
+    end
+
+    def resident_abilities(user, project)
+      can :show, Activity do |activity|
+        activity.follower?(user)
+      end
     end
 end

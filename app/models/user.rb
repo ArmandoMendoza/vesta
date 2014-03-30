@@ -41,6 +41,14 @@ class User < ActiveRecord::Base
     company.class.to_s if company.present?
   end
 
+  def belongs_to_contractor?
+    company_type == "Contractor"
+  end
+
+  def belongs_to_sub_contractor?
+    company_type == "SubContractor"
+  end
+
   private
     def set_user_type
       self.user_type ||= USER_TYPE[:regular]
