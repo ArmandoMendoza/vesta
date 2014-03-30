@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :followers
   has_many :projects, through: :collaborators
   has_many :activities, through: :followers
-
+  has_and_belongs_to_many :tasks
 
   #### Validations ###
   validates_presence_of :first_name, :last_name, :user_type
@@ -39,6 +39,14 @@ class User < ActiveRecord::Base
 
   def company_type
     company.class.to_s if company.present?
+  end
+
+  def belongs_to_contractor?
+    company_type == "Contractor"
+  end
+
+  def belongs_to_sub_contractor?
+    company_type == "SubContractor"
   end
 
   private

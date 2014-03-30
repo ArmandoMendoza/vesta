@@ -1,16 +1,20 @@
 <!-- FORM -->
-<%= form_for Task.new, url: [@project, @activity, :tasks], remote: true,
-  html: { class: "form-inline" } do |f| %>
-  <div class="form-group" style="width: 100%">
-    <%= f.text_field :description, class: "form-control", placeholder: "Agregar Tarea" %>
-  </div>
+<% if @activity.owner?(current_user) %>
+  <%= simple_form_for Task.new, url: [@project, @activity, :tasks], remote: true,
+    html: { class: "form" } do |f| %>
+      <%= f.input :description, placeholder: "Agregar Tarea",
+        label: false %>
+      <%= f.association :users, collection: @activity.users,
+        label_method: :full_name, value_method: :id, label: false,
+        input_html: { class: "chosen", data: { placeholder: "Asignar Usuarios" } } %>
+  <% end %>
 <% end %>
 <br>
 <!-- TASK LIST -->
 <% if @activity.tasks.any? %>
   <table class="table-tasks">
     <tbody>
-      <% @activity.tasks.each do |task| %>
+      <% @activity.tasks.includes(:users).each do |task| %>
         <%= render partial: "shared/task_cell", locals: { project: @project,
           activity: @activity, task: task } %>
       <% end %>

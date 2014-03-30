@@ -126,10 +126,16 @@ Execution.blueprint do
   activity { Activity.make! }
 end
 
-Follower.blueprint(:sub_contractor_regular) do
+Follower.blueprint(:follower) do
   activity { Activity.make! }
   user { User.make!(:sub_contractor_regular) }
-  role { "Seguidor" }
+  role { Follower::ROLES[:follower] }
+end
+
+Follower.blueprint(:owner) do
+  activity { Activity.make! }
+  user { User.make!(:sub_contractor_owner) }
+  role { Follower::ROLES[:owner] }
 end
 
 Image.blueprint(:activity) do
@@ -142,4 +148,5 @@ Task.blueprint do
   description { "An a Task" }
   completed { false }
   activity { Activity.make! }
+  users { [User.make!(:sub_contractor_regular)] }
 end
