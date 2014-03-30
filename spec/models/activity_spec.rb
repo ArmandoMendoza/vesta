@@ -18,8 +18,8 @@ describe Activity do
     describe "current_execution" do
       it "return the last execution of activity" do
         activity = Activity.make!
-        execution_one = Execution.make!(activity: activity, percent: 10, date: Date.today - 2)
-        execution_two = Execution.make!(activity: activity, percent: 30, date: Date.today - 1)
+        Execution.make!(activity: activity, percent: 10, date: Date.today - 2)
+        Execution.make!(activity: activity, percent: 30, date: Date.today - 1)
         execution_last = Execution.make!(activity: activity, percent: 70)
         expect(activity.current_execution).to eq(execution_last)
       end
@@ -31,8 +31,8 @@ describe Activity do
         user = User.make!(:sub_contractor_regular)
         project = Project.make!(sub_contractor: user.company)
         activity = Activity.make!(project: project)
-        Follower.make!(:sub_contractor_regular, user: user, activity: activity)
-        expect(activity.role_of(user)).to eq("Seguidor")
+        Follower.make!(:follower, user: user, activity: activity)
+        expect(activity.role_of(user)).to eq("seguidor")
         expect(activity.role_of(no_follower)).to be_nil
       end
     end

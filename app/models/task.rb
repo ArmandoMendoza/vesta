@@ -11,6 +11,10 @@ class Task < ActiveRecord::Base
 
   #### Instance Methods ####
 
+  def asign_to?(user)
+    users.include?(user)
+  end
+
   def mark
     toggle!(:completed)
   end

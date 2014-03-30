@@ -38,6 +38,10 @@ class Activity < ActiveRecord::Base
     followers.where(user_id: user.id).first.try(:role)
   end
 
+  def owner?(user)
+    role_of(user) == Follower::ROLES[:owner]
+  end
+
   def is_active?
     has_parent? ? parent_finished? : true
   end
