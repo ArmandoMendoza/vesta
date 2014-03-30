@@ -24,14 +24,16 @@ class Ability
     end
 
     def owner_sub_contractor_abilities(user)
-      can :manage, Image
-      can :read, [SubContractor, Contractor, User, Project, Collaborator, Activity]
-      can :create, Execution
-      can :update, SubContractor, id: user.company.id
+      can :read, User
+      can :read, Collaborator
+
+      can [:read, :update], SubContractor, id: user.company.id
+      can [:read, :create, :update], Project, sub_contractor_id: user.company.id
+
+
       can [:create, :update], User do |company_user|
         company_user.company == user.company
       end
-      can [:create, :update], Project, sub_contractor_id: user.company.id
       can :create, Collaborator do |collaborator|
         collaborator.project.sub_contractor == user.company
       end

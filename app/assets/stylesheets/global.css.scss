@@ -1,3 +1,7 @@
+// #EDAB35 amarillo
+// #47474A gris
+// #AF2D27 rojo
+
 @import "compass/utilities/sprites";
 
 li.search-field input[type="text"] { height: auto !important }
@@ -116,4 +120,16 @@ body {
 .thumb-gallery {
   display: block;
   padding-left: 40px;
+}
+
+.empty-table {
+    border-left: 3px solid #EDAB35;
+    border-right: 1px solid #DDDDDD;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    background-color: #FFFFFF;
+    color: #AF2D27;
+    font-weight: bold;
+    margin: 10px 20px;
+    padding: 10px;
 }

@@ -1,33 +1,37 @@
 <%= table_panel("LISTADO DE CONTRATISTAS", (can?(:create, SubContractor)),
   button_options: { text: "Nuevo Contratista", url: new_sub_contractor_path }) do %>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Rif</th>
-      <th>Direccion</th>
-      <th>Telefono</th>
-      <th>Email</th>
-      <th colspan="3">Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @sub_contractors.each do |sub_contractor| %>
-    <tr>
-      <td><%= sub_contractor.name %></td>
-      <td><%= sub_contractor.rif %></td>
-      <td><%= sub_contractor.address %></td>
-      <td><%= sub_contractor.phone %></td>
-      <td><%= sub_contractor.email %></td>
-      <% if can? :read, sub_contractor %>
-        <td><%= link_to_show "detalles", sub_contractor_path(sub_contractor) %></td>
-      <% end %>
-      <% if can? :edit, sub_contractor %>
-        <td><%= link_to_edit "editar", edit_sub_contractor_path(sub_contractor) %></td>
-      <% end %>
-      <% if can? :read, User %>
-        <td><%= link_to "usuarios", sub_contractor_users_path(sub_contractor) %></td>
-      <% end %>
-    </tr>
+  <% if @sub_contractors.present? %>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Rif</th>
+        <th>Direccion</th>
+        <th>Telefono</th>
+        <th>Email</th>
+        <th colspan="3">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @sub_contractors.each do |sub_contractor| %>
+      <tr>
+        <td><%= sub_contractor.name %></td>
+        <td><%= sub_contractor.rif %></td>
+        <td><%= sub_contractor.address %></td>
+        <td><%= sub_contractor.phone %></td>
+        <td><%= sub_contractor.email %></td>
+        <% if can? :read, sub_contractor %>
+          <td><%= link_to_show "detalles", sub_contractor_path(sub_contractor) %></td>
+        <% end %>
+        <% if can? :edit, sub_contractor %>
+          <td><%= link_to_edit "editar", edit_sub_contractor_path(sub_contractor) %></td>
+        <% end %>
+        <% if can? :read, User %>
+          <td><%= link_to "usuarios", sub_contractor_users_path(sub_contractor) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  <% else %>
+    <%= empty_table %>
   <% end %>
-  </tbody>
 <% end %>

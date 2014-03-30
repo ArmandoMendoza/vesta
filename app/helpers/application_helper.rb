@@ -120,6 +120,10 @@ module ApplicationHelper
     date.strftime('%d-%m-%Y')
   end
 
+  def empty_table(msj = "No hay datos disponibles...")
+    content_tag(:div, msj, class: "empty-table")
+  end
+
   private
     def add_class(*args, default_class)
       options = args.extract_options!

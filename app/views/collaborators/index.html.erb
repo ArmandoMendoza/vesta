@@ -1,24 +1,28 @@
 <%= table_panel("LISTADO DE COLABORADORES", (can?(:create, Collaborator)),
   button_options: { text: "Nuevo colaborador", url: new_project_collaborator_path(@project) }) do %>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Tipo de Colaboracion</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @collaborators.each do |collaborator| %>
-    <tr>
-      <!-- eager loading here! -->
-      <td><%= collaborator.user.full_name %></td>
-      <td><%= collaborator.collaborator_type %></td>
-      <% if can? :edit, collaborator %>
-        <td><%= link_to_edit "editar", edit_project_collaborator_path(@project, collaborator) %></td>
-      <% end %>
-    </tr>
+  <% if @collaborators.present? %>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Tipo de Colaboracion</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @collaborators.each do |collaborator| %>
+      <tr>
+        <!-- eager loading here! -->
+        <td><%= collaborator.user.full_name %></td>
+        <td><%= collaborator.collaborator_type %></td>
+        <% if can? :edit, collaborator %>
+          <td><%= link_to_edit "editar", edit_project_collaborator_path(@project, collaborator) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  <% else %>
+    <%= empty_table %>
   <% end %>
-  </tbody>
 <% end %>
 
 

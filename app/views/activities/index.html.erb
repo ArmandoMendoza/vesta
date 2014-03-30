@@ -1,33 +1,37 @@
 <%= table_panel("ACTIVIDADES DE #{@project.name}", (can?(:create, Activity)),
   button_options: { text: "Nueva Actividad", url: new_project_activity_path },
   url_to_back: projects_path ) do %>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Descripcion</th>
-      <th>Fecha Inicio</th>
-      <th>Fecha Final</th>
-      <th>Tiempo de Ejecucion</th>
-      <th>Estatus</th>
-      <th colspan="2">Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @activities.each do |activity| %>
-    <tr>
-      <td><%= activity.name %></td>
-      <td><%= activity.description %></td>
-      <td><%= format_date(activity.init_date) %></td>
-      <td><%= format_date(activity.finish_date) %></td>
-      <td><%= activity.full_execution_time %></td>
-      <td><%= activity.state %></td>
-      <% if can? :read, activity %>
-        <td><%= link_to_show "detalles", project_activity_path(@project, activity) %></td>
-      <% end %>
-      <% if can? :edit, activity %>
-        <td><%= link_to_edit "editar", edit_project_activity_path(@project, activity) %></td>
-      <% end %>
-    </tr>
+  <% if @activities.present? %>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Fecha Inicio</th>
+        <th>Fecha Final</th>
+        <th>Tiempo de Ejecucion</th>
+        <th>Estatus</th>
+        <th colspan="2">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= activity.name %></td>
+        <td><%= activity.description %></td>
+        <td><%= format_date(activity.init_date) %></td>
+        <td><%= format_date(activity.finish_date) %></td>
+        <td><%= activity.full_execution_time %></td>
+        <td><%= activity.state %></td>
+        <% if can? :read, activity %>
+          <td><%= link_to_show "detalles", project_activity_path(@project, activity) %></td>
+        <% end %>
+        <% if can? :edit, activity %>
+          <td><%= link_to_edit "editar", edit_project_activity_path(@project, activity) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  <% else %>
+    <%= empty_table %>
   <% end %>
-  </tbody>
 <% end %>
