@@ -1,5 +1,7 @@
 @import "compass/utilities/sprites";
 
+li.search-field input[type="text"] { height: auto !important }
+
 body {
   background: url("background.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
   color: #47474A;

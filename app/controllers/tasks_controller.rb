@@ -2,7 +2,6 @@ class TasksController < ApplicationController
   before_action :set_task_params, only: [:create, :update]
   before_action :get_parents
   before_action :get_activity, only: [:destroy, :mark]
-  before_action :check_user
 
   def create
     @task = @activity.tasks.create(params[:task])
@@ -12,11 +11,11 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task.destroy
+    @activity.owner?(current_user) ? @task.destroy : render("error")
   end
 
   def mark
-    @task.mark
+    @task.asign_to?(current_user) ? @task.mark : render("error")
   end
 
   private
@@ -31,9 +30,5 @@ class TasksController < ApplicationController
 
     def set_task_params
       params[:task] = params.require(:task).permit!
-    end
-
-    def check_user
-      render "error" unless @task.asign_to?(current_user)
     end
 end

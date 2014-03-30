@@ -1,12 +1,16 @@
 <tr id= <%= "task-#{task.id}" %> class=<%= class_completed(task.completed?) %> >
   <td class="state-cell">
-    <%= link_to_change_completed(task.completed?, [:mark, project, activity, task]) %>
+    <% if task.asign_to?(current_user) %>
+      <%= link_to_change_completed(task.completed?, [:mark, project, activity, task]) %>
+    <% end %>
   </td>
   <td class="name-cell">
     <b><%= task.description %></b> <br>
     <%= "[ asignada a: #{task.users.map(&:full_name).join(' - ')}]" %>
   </td>
-  <td class="close-cell">
-    <%= link_to_delete_task([project, activity, task]) %>
-  </td>
+  <% if activity.owner?(current_user) %>
+    <td class="close-cell">
+      <%= link_to_delete_task([project, activity, task]) %>
+    </td>
+  <% end %>
 </tr>
