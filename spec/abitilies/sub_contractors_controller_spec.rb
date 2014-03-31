@@ -60,15 +60,19 @@ describe SubContractorsController, type: :controller do
       before do
         3.times { SubContractor.make! }
       end
-      it "can see all subcontractors from index" do
+      it "can see only your own company" do
         get :index
         expect(response.code).to eq("200")
-        expect(assigns(:sub_contractors)).to eq(SubContractor.all)
+        expect(assigns(:sub_contractors)).to eq([@sub_contractor_owner.company])
       end
-      it "can see all info of a subcontractor from show" do
-        get :show, id: SubContractor.last
+      it "can see only the info of your own company" do
+        get :show, id: @sub_contractor_owner.company
         expect(response.code).to eq("200")
-        expect(assigns(:sub_contractor)).to eq(SubContractor.last)
+        expect(assigns(:sub_contractor)).to eq(@sub_contractor_owner.company)
+      end
+
+      it "can't see the info of other company" do
+        expect{ get :show, id: SubContractor.last }.to raise_error(CanCan::AccessDenied)
       end
     end
 

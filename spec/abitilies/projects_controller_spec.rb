@@ -58,7 +58,7 @@ describe ProjectsController, type: :controller do
 
     describe "Read" do
       before do
-        3.times { Project.make! }
+        3.times { Project.make!(sub_contractor: @sub_contractor_owner.company) }
       end
       it "can see all projects from index" do
         get :index

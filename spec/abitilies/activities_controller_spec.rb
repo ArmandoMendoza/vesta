@@ -111,10 +111,10 @@ describe ActivitiesController, type: :controller do
         expect(response.code).to eq("200")
         expect(assigns(:activities)).to eq(@project.activities.load.to_a)
       end
-      it "can see all activities of other project from index" do
-        get :index, project_id: @other_project.id
-        expect(response.code).to eq("200")
-        expect(assigns(:activities)).to eq(@other_project.activities.load.to_a)
+      it "can't see project's activities of other company" do
+        expect{
+          get :index, project_id: @other_project.id
+        }.to raise_error(CanCan::AccessDenied)
       end
     end
 

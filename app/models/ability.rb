@@ -13,7 +13,7 @@ class Ability
     elsif (user.regular? && user.belongs_to_sub_contractor?)
       regular_sub_contractor_abilities(user)
       if project.present? && project.role_of(user) == "Residente"
-        resident_abilities(user, project)
+        resident_abilities(user)
       end
     end
   end
@@ -24,6 +24,7 @@ class Ability
     end
 
     def owner_sub_contractor_abilities(user)
+      can :read, Contractor #OJO: esto hay que discutirlo.
       can [:read, :update], SubContractor, id: user.company.id
       can [:read, :create, :update], Project, sub_contractor_id: user.company.id
 
@@ -73,23 +74,22 @@ class Ability
     end
 
     def regular_contractor_abilities(user)
-      can :manage, User, id: user.id
+      can [:read, :update], User, id: user.id
       can :read, Contractor, id: user.company.id
-      can :read, Project, contractor_id: user.company.id
+      can :read, Project, collaborators: { user_id: user.id }
+
     end
 
     def regular_sub_contractor_abilities(user)
-      can :manage, User, id: user.id
+      can [:read, :update], User, id: user.id
       can :read, SubContractor, id: user.company.id
-      can :read, Project, sub_contractor_id: user.company.id
+      can :read, Project, collaborators: { user_id: user.id }
+      can :index, Activity, followers: { user_id: user.id }
     end
 
-    def resident_abilities(user, project)
+    def resident_abilities(user)
       #Actividades
-      can :index, Activity
-      can :show, Activity do |activity|
-        activity.follower?(user)
-      end
+      can :show, Activity, followers: { user_id: user.id }
 
       #Imagenes
       can :manage, Image

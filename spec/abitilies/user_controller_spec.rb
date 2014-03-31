@@ -126,16 +126,15 @@ describe UsersController, type: :controller do
         expect(response.code).to eq("200")
         expect(assigns(:user)).to eq(@sub_contractor.users.last)
       end
-
-      it "can see all users of other company from index" do
-        get :index, sub_contractor_id: @other_sub_contractor.id
-        expect(response.code).to eq("200")
-        expect(assigns(:users)).to eq(@other_sub_contractor.users.load.to_a)
+      it "can't see the users's list of other company" do
+        expect{
+          get :index, sub_contractor_id: @other_sub_contractor.id
+        }.to raise_error(CanCan::AccessDenied)
       end
-      it "can see info of user other company from show" do
-        get :show, id: @other_sub_contractor.users.last, sub_contractor_id: @other_sub_contractor.id
-        expect(response.code).to eq("200")
-        expect(assigns(:user)).to eq(@other_sub_contractor.users.last)
+      it "can't see the user's info of other company" do
+        expect{
+          get :show, id: @other_sub_contractor.users.last, sub_contractor_id: @other_sub_contractor.id
+        }.to raise_error(CanCan::AccessDenied)
       end
     end
 

@@ -108,10 +108,10 @@ describe CollaboratorsController, type: :controller do
         expect(response.code).to eq("200")
         expect(assigns(:collaborators)).to eq(@project.collaborators.load.to_a)
       end
-      it "can see all collaborators of other project from index" do
-        get :index, project_id: @other_project.id
-        expect(response.code).to eq("200")
-        expect(assigns(:collaborators)).to eq(@other_project.collaborators.load.to_a)
+      it "can't see the collaborators of other project" do
+        expect{
+          get :index, project_id: @other_project.id
+        }.to raise_error(CanCan::AccessDenied)
       end
     end
 
