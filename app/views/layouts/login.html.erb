@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vesta</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400,600,700,800' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="login">
+    <div class="bg-layer"></div>
+    <div class="row">
+      <div class="col-4-md col-md-offset-4">
+        <div class="panel panel-default panel-login" style="width: 450px">
+          <div class="panel-body">
+            <div class="login-header">
+              <div class="pull-left"><%= image_tag("logo.png") %></div>
+              <div class="pull-right">
+                <div class="h-group">
+                  Bienvenido a Vesta <br>
+                  <span class="sub-group"><%= I18n.localize(Time.now, :format => :short) %></span>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <br>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

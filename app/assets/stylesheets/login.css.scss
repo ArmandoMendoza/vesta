@@ -1,0 +1,27 @@
+.login {
+  div.bg-layer {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    background-color: #EDAB35;
+    height: 112px;
+    width: 100%;
+  }
+  .panel-login {
+    position: absolute;
+    top: 30%;
+  }
+  .login-header {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #D5D5D5;
+    .h-group {
+      padding: 15px 10px 15px 0;
+      color: #333333;
+      font-size: 2.18em;
+      font-weight: 700;
+      .sub-group {
+        font-size: 14px;
+      }
+    }
+  }
+}
