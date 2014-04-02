@@ -6,9 +6,9 @@
     <% end %>
   </div>
   <div class="col-md-5">
-    <%= popover_to_execution_form(@execution, project_activity_execution_path(@project,
-      @activity, @execution)) %>
-    <%= link_to "Imagenes", [@project, @activity, :images] %>
+    <%= panel(nil, false) do %>
+      <%= render "buttons_section" %>
+    <% end %>
   </div>
 </div>
 <div class="row">

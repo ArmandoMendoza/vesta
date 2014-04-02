@@ -10,13 +10,7 @@
   <table class="table-comments">
     <tbody>
       <% @activity.comments.includes(:user).each do |comment| %>
-        <tr>
-          <td><strong><%= comment.user.full_name %></strong>
-            <%= content_tag(:abbr, nil, class: "timeago",
-              title: comment.created_at.to_time.iso8601) %>:
-            <%= comment.comment %>
-          </td>
-        </tr>
+        <%= render partial: "shared/comment_cell", locals: { comment: comment } %>
       <% end %>
     </tbody>
   </table>

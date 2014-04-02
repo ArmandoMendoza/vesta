@@ -92,6 +92,12 @@ module ApplicationHelper
     content_tag(:button, text, type: "submit", value: text, class: "btn btn-vesta btn-form col-md-6")
   end
 
+  def quick_button(text, image, link)
+    link_to(link, class: "quick-button", title: text) do
+      content_tag(:p, text)
+    end
+  end
+
   # HELPERS TASKS INTERFACE
   def link_to_change_completed(state, url)
     if state
@@ -109,6 +115,11 @@ module ApplicationHelper
   def link_to_delete_task(url)
     link_to raw("&times;"), url, class: 'close', aria_hidden: true, remote: true, method: :delete,
       title: "Eliminar", data: { confirm: "Desea eliminar tarea?", toggle: 'tooltip' }
+  end
+
+  def link_to_delete_comment(url)
+    link_to raw("&times;"), url, class: 'close', aria_hidden: true, remote: true, method: :delete,
+      title: "Eliminar", data: { confirm: "Desea eliminar comentario?", toggle: 'tooltip' }
   end
 
   def class_completed(state)

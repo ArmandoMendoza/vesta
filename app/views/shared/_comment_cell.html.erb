@@ -1,0 +1,12 @@
+<tr id=<%="comment-#{comment.id}" %>>
+  <td class="comment-cell"><strong><%= comment.user.full_name %></strong>
+    <%= content_tag(:abbr, nil, class: "timeago",
+      title: comment.created_at.to_time.iso8601) %>:
+    <%= comment.comment %>
+  </td>
+  <td class="close-cell">
+    <% if comment.created_by(current_user) %>
+      <%= link_to_delete_comment('#') %>
+    <% end %>
+  </td>
+</tr>

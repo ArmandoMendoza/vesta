@@ -8,9 +8,9 @@
     <b><%= task.description %></b> <br>
     <%= "[ asignada a: #{task.users.map(&:full_name).join(' - ')}]" %>
   </td>
-  <% if activity.owner?(current_user) %>
-    <td class="close-cell">
+  <td class="close-cell">
+    <% if activity.owner?(current_user) %>
       <%= link_to_delete_task([project, activity, task]) %>
-    </td>
-  <% end %>
+    <% end %>
+  </td>
 </tr>

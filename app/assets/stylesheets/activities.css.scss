@@ -1,3 +1,22 @@
+.table-comments {
+  tbody tr {
+    &:hover {
+      .close { display: inline }
+    }
+  }
+  .close {
+    display: none;
+    font-size: 14px;
+  }
+  .comment-cell {
+    border-right: none;
+  }
+  .close-cell {
+    border-left: none;
+    padding-right: 5px;
+  }
+}
+
 .table-tasks {
   width: 100%;
   background-color: #FFF;
